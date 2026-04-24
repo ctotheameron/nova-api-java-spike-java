@@ -1,4 +1,4 @@
-configured_endpoints: 19
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/angellist--cameron-dash%2Fnova-api-java-spike-21652c2d2e6a5aab678ca435ba09ef698ff34270021f349660b84d5d98bf3923.yml
-openapi_spec_hash: 356a7298b2abac3fdf72ad5ee046b952
-config_hash: 37e6a02bc3c3a8a60e547bb8b87e722d
+configured_endpoints: 2
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/angellist--cameron-dash%2Fnova-api-java-spike-1bd3c1ba6cfd116e01ad8a44219d96f46b496ff1838223fdbc91de83ab395411.yml
+openapi_spec_hash: 6237df2d20715391ed97f74b31227c32
+config_hash: 4bdc69a18738afcdb32900c5a790c0e4
