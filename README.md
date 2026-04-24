@@ -2,8 +2,8 @@
 
 <!-- x-release-please-start-version -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.angellist.nova.api/angellist-nova-java)](https://central.sonatype.com/artifact/com.angellist.nova.api/angellist-nova-java/0.0.1)
-[![javadoc](https://javadoc.io/badge2/com.angellist.nova.api/angellist-nova-java/0.0.1/javadoc.svg)](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.0.1)
+[![Maven Central](https://img.shields.io/maven-central/v/com.angellist.nova.api/angellist-nova-java)](https://central.sonatype.com/artifact/com.angellist.nova.api/angellist-nova-java/0.1.0)
+[![javadoc](https://javadoc.io/badge2/com.angellist.nova.api/angellist-nova-java/0.1.0/javadoc.svg)](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.1.0)
 
 <!-- x-release-please-end -->
 
@@ -22,7 +22,7 @@ Use the Angellist Nova MCP Server to enable AI assistants to interact with this 
 
 <!-- x-release-please-start-version -->
 
-The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.0.1).
+The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.1.0).
 
 <!-- x-release-please-end -->
 
@@ -33,7 +33,7 @@ The REST API documentation can be found on [docs.angellist.com](https://docs.ang
 ### Gradle
 
 ```kotlin
-implementation("com.angellist.nova.api:angellist-nova-java:0.0.1")
+implementation("com.angellist.nova.api:angellist-nova-java:0.1.0")
 ```
 
 ### Maven
@@ -42,7 +42,7 @@ implementation("com.angellist.nova.api:angellist-nova-java:0.0.1")
 <dependency>
   <groupId>com.angellist.nova.api</groupId>
   <artifactId>angellist-nova-java</artifactId>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
