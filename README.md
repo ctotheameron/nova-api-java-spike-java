@@ -1,11 +1,7 @@
 # Angellist Nova Java API Library
 
-<!-- x-release-please-start-version -->
-
-[![Maven Central](https://img.shields.io/maven-central/v/com.angellist.nova.api/angellist-nova-java)](https://central.sonatype.com/artifact/com.angellist.nova.api/angellist-nova-java/0.1.0)
-[![javadoc](https://javadoc.io/badge2/com.angellist.nova.api/angellist-nova-java/0.1.0/javadoc.svg)](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.1.0)
-
-<!-- x-release-please-end -->
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ctotheameron/angellist-nova-java)](https://central.sonatype.com/artifact/io.github.ctotheameron/angellist-nova-java/0.0.1)
+[![javadoc](https://javadoc.io/badge2/io.github.ctotheameron/angellist-nova-java/0.0.1/javadoc.svg)](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.0.1)
 
 The Angellist Nova Java SDK provides convenient access to the [Angellist Nova REST API](https://docs.angellist.com/nova-api) from applications written in Java.
 
@@ -20,33 +16,25 @@ Use the Angellist Nova MCP Server to enable AI assistants to interact with this 
 
 > Note: You may need to set environment variables in your MCP client.
 
-<!-- x-release-please-start-version -->
-
-The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.1.0).
-
-<!-- x-release-please-end -->
+The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.0.1).
 
 ## Installation
-
-<!-- x-release-please-start-version -->
 
 ### Gradle
 
 ```kotlin
-implementation("com.angellist.nova.api:angellist-nova-java:0.1.0")
+implementation("io.github.ctotheameron:angellist-nova-java:0.0.1")
 ```
 
 ### Maven
 
 ```xml
 <dependency>
-  <groupId>com.angellist.nova.api</groupId>
+  <groupId>io.github.ctotheameron</groupId>
   <artifactId>angellist-nova-java</artifactId>
-  <version>0.1.0</version>
+  <version>0.0.1</version>
 </dependency>
 ```
-
-<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -55,12 +43,12 @@ This library requires Java 8 or later.
 ## Usage
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
-import com.angellist.nova.api.models.distributions.Currency;
-import com.angellist.nova.api.models.distributions.Distribution;
-import com.angellist.nova.api.models.distributions.DistributionCreateParams;
-import com.angellist.nova.api.models.entities.EntityType;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.models.distributions.Currency;
+import io.github.ctotheameron.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.DistributionCreateParams;
+import io.github.ctotheameron.models.entities.EntityType;
 import java.time.OffsetDateTime;
 
 // Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
@@ -95,8 +83,8 @@ Distribution distribution = client.distributions().create(params);
 Configure the client using system properties or environment variables:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 // Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
 // Or configures using the `ANGELLIST_CLIENT_ID`, `ANGELLIST_CLIENT_SECRET`, `ANGELLIST_ORGANIZATION_ID` and `ANGELLIST_NOVA_BASE_URL` environment variables
@@ -106,8 +94,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.fromEnv();
 Or manually:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .clientId("My Client ID")
@@ -118,8 +106,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
 Or using a combination of the two approaches:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     // Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
@@ -149,7 +137,7 @@ System properties take precedence over environment variables.
 To temporarily use a modified client configuration, while reusing the same connection and thread pools, call `withOptions()` on any client or service:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
 
 AngellistNovaClient clientWithOptions = client.withOptions(optionsBuilder -> {
     optionsBuilder.baseUrl("https://example.com");
@@ -178,12 +166,12 @@ Because each class is immutable, builder modification will _never_ affect alread
 The default client is synchronous. To switch to asynchronous execution, call the `async()` method:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
-import com.angellist.nova.api.models.distributions.Currency;
-import com.angellist.nova.api.models.distributions.Distribution;
-import com.angellist.nova.api.models.distributions.DistributionCreateParams;
-import com.angellist.nova.api.models.entities.EntityType;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.models.distributions.Currency;
+import io.github.ctotheameron.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.DistributionCreateParams;
+import io.github.ctotheameron.models.entities.EntityType;
 import java.time.OffsetDateTime;
 import java.util.concurrent.CompletableFuture;
 
@@ -217,12 +205,12 @@ CompletableFuture<Distribution> distribution = client.async().distributions().cr
 Or create an asynchronous client from the beginning:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClientAsync;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClientAsync;
-import com.angellist.nova.api.models.distributions.Currency;
-import com.angellist.nova.api.models.distributions.Distribution;
-import com.angellist.nova.api.models.distributions.DistributionCreateParams;
-import com.angellist.nova.api.models.entities.EntityType;
+import io.github.ctotheameron.client.AngellistNovaClientAsync;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClientAsync;
+import io.github.ctotheameron.models.distributions.Currency;
+import io.github.ctotheameron.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.DistributionCreateParams;
+import io.github.ctotheameron.models.entities.EntityType;
 import java.time.OffsetDateTime;
 import java.util.concurrent.CompletableFuture;
 
@@ -262,14 +250,14 @@ The SDK defines methods that deserialize responses into instances of Java classe
 To access this data, prefix any HTTP method call on a client or service with `withRawResponse()`:
 
 ```java
-import com.angellist.nova.api.core.http.Headers;
-import com.angellist.nova.api.core.http.HttpResponseFor;
-import com.angellist.nova.api.models.distributions.Currency;
-import com.angellist.nova.api.models.distributions.Distribution;
-import com.angellist.nova.api.models.distributions.DistributionCreateParams;
-import com.angellist.nova.api.models.entities.EntityType;
-import com.angellist.nova.api.models.entities.InternationalWireInfo;
-import com.angellist.nova.api.models.entities.WireAddress;
+import io.github.ctotheameron.core.http.Headers;
+import io.github.ctotheameron.core.http.HttpResponseFor;
+import io.github.ctotheameron.models.distributions.Currency;
+import io.github.ctotheameron.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.DistributionCreateParams;
+import io.github.ctotheameron.models.entities.EntityType;
+import io.github.ctotheameron.models.entities.InternationalWireInfo;
+import io.github.ctotheameron.models.entities.WireAddress;
 import java.time.OffsetDateTime;
 
 DistributionCreateParams params = DistributionCreateParams.builder()
@@ -326,7 +314,7 @@ Headers headers = distribution.headers();
 You can still deserialize the response into an instance of a Java class if needed:
 
 ```java
-import com.angellist.nova.api.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.Distribution;
 
 Distribution parsedDistribution = distribution.parse();
 ```
@@ -335,26 +323,26 @@ Distribution parsedDistribution = distribution.parse();
 
 The SDK throws custom unchecked exception types:
 
-- [`AngellistNovaServiceException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/AngellistNovaServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
+- [`AngellistNovaServiceException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
 
   | Status | Exception                                                                                                                                  |
   | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-  | 400    | [`BadRequestException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/BadRequestException.kt)                     |
-  | 401    | [`UnauthorizedException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/UnauthorizedException.kt)                 |
-  | 403    | [`PermissionDeniedException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/PermissionDeniedException.kt)         |
-  | 404    | [`NotFoundException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/NotFoundException.kt)                         |
-  | 422    | [`UnprocessableEntityException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/UnprocessableEntityException.kt)   |
-  | 429    | [`RateLimitException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/RateLimitException.kt)                       |
-  | 5xx    | [`InternalServerException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/InternalServerException.kt)             |
-  | others | [`UnexpectedStatusCodeException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/UnexpectedStatusCodeException.kt) |
+  | 400    | [`BadRequestException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/BadRequestException.kt)                     |
+  | 401    | [`UnauthorizedException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/UnauthorizedException.kt)                 |
+  | 403    | [`PermissionDeniedException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/PermissionDeniedException.kt)         |
+  | 404    | [`NotFoundException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/NotFoundException.kt)                         |
+  | 422    | [`UnprocessableEntityException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/UnprocessableEntityException.kt)   |
+  | 429    | [`RateLimitException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/RateLimitException.kt)                       |
+  | 5xx    | [`InternalServerException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/InternalServerException.kt)             |
+  | others | [`UnexpectedStatusCodeException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/UnexpectedStatusCodeException.kt) |
 
-- [`AngellistNovaIoException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/AngellistNovaIoException.kt): I/O networking errors.
+- [`AngellistNovaIoException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaIoException.kt): I/O networking errors.
 
-- [`AngellistNovaRetryableException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/AngellistNovaRetryableException.kt): Generic error indicating a failure that could be retried by the client.
+- [`AngellistNovaRetryableException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaRetryableException.kt): Generic error indicating a failure that could be retried by the client.
 
-- [`AngellistNovaInvalidDataException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/AngellistNovaInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
+- [`AngellistNovaInvalidDataException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
 
-- [`AngellistNovaException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/AngellistNovaException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
+- [`AngellistNovaException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
 
 ## Logging
 
@@ -384,7 +372,7 @@ The SDK depends on [Jackson](https://github.com/FasterXML/jackson) for JSON seri
 
 The SDK throws an exception if it detects an incompatible Jackson version at runtime (e.g. if the default version was overridden in your Maven or Gradle config).
 
-If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClientAsync.kt).
+If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt).
 
 > [!CAUTION]
 > We make no guarantee that the SDK works correctly when the Jackson version check is disabled.
@@ -410,8 +398,8 @@ The API may also explicitly instruct the SDK to retry or not retry a request.
 To set a custom number of retries, configure the client using the `maxRetries` method:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
@@ -426,7 +414,7 @@ Requests time out after 1 minute by default.
 To set a custom timeout, configure the method call using the `timeout` method:
 
 ```java
-import com.angellist.nova.api.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.Distribution;
 
 Distribution distribution = client.distributions().create(
   params, RequestOptions.builder().timeout(Duration.ofSeconds(30)).build()
@@ -436,8 +424,8 @@ Distribution distribution = client.distributions().create(
 Or configure the default for all method calls at the client level:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 import java.time.Duration;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
@@ -451,8 +439,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
 To route requests through a proxy, configure the client using the `proxy` method:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 
@@ -471,8 +459,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
 To customize the underlying OkHttp connection pool, configure the client using the `maxIdleConnections` and `keepAliveDuration` methods:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 import java.time.Duration;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
@@ -494,8 +482,8 @@ If both options are unset, OkHttp's default connection pool settings are used.
 To configure how HTTPS connections are secured, configure the client using the `sslSocketFactory`, `trustManager`, and `hostnameVerifier` methods:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
@@ -511,8 +499,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
 The SDK sends requests to the production by default. To send requests to a different environment, configure the client like so:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
@@ -527,10 +515,10 @@ The SDK consists of three artifacts:
 - `angellist-nova-java-core`
   - Contains core SDK logic
   - Does not depend on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`AngellistNovaClient`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClient.kt), [`AngellistNovaClientAsync`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientAsync.kt), [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientImpl.kt), and [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientAsyncImpl.kt), all of which can work with any HTTP client
+  - Exposes [`AngellistNovaClient`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClient.kt), [`AngellistNovaClientAsync`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsync.kt), [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt), and [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), all of which can work with any HTTP client
 - `angellist-nova-java-client-okhttp`
   - Depends on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClient.kt) and [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClientAsync.kt), which provide a way to construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientImpl.kt) and [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientAsyncImpl.kt), respectively, using OkHttp
+  - Exposes [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) and [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), which provide a way to construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) and [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), respectively, using OkHttp
 - `angellist-nova-java`
   - Depends on and exposes the APIs of both `angellist-nova-java-core` and `angellist-nova-java-client-okhttp`
   - Does not have its own logic
@@ -545,16 +533,16 @@ This structure allows replacing the SDK's default HTTP client without pulling in
 To use a customized `OkHttpClient`:
 
 1. Replace your [`angellist-nova-java` dependency](#installation) with `angellist-nova-java-core`
-2. Copy `angellist-nova-java-client-okhttp`'s [`OkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/OkHttpClient.kt) class into your code and customize it
-3. Construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your customized client
+2. Copy `angellist-nova-java-client-okhttp`'s [`OkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/OkHttpClient.kt) class into your code and customize it
+3. Construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your customized client
 
 ### Completely custom HTTP client
 
 To use a completely custom HTTP client:
 
 1. Replace your [`angellist-nova-java` dependency](#installation) with `angellist-nova-java-core`
-2. Write a class that implements the [`HttpClient`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/core/http/HttpClient.kt) interface
-3. Construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/com/angellist/nova/api/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your new client class
+2. Write a class that implements the [`HttpClient`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/http/HttpClient.kt) interface
+3. Construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your new client class
 
 ## Undocumented API functionality
 
@@ -565,8 +553,8 @@ The SDK is typed for convenient usage of the documented API. However, it also su
 To set undocumented parameters, call the `putAdditionalHeader`, `putAdditionalQueryParam`, or `putAdditionalBodyProperty` methods on any `Params` class:
 
 ```java
-import com.angellist.nova.api.core.JsonValue;
-import com.angellist.nova.api.models.distributions.DistributionCreateParams;
+import io.github.ctotheameron.core.JsonValue;
+import io.github.ctotheameron.models.distributions.DistributionCreateParams;
 
 DistributionCreateParams params = DistributionCreateParams.builder()
     .putAdditionalHeader("Secret-Header", "42")
@@ -577,13 +565,13 @@ DistributionCreateParams params = DistributionCreateParams.builder()
 
 These can be accessed on the built object later using the `_additionalHeaders()`, `_additionalQueryParams()`, and `_additionalBodyProperties()` methods.
 
-To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/core/Values.kt) object to its setter:
+To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) object to its setter:
 
 ```java
-import com.angellist.nova.api.core.JsonValue;
-import com.angellist.nova.api.models.distributions.Currency;
-import com.angellist.nova.api.models.distributions.DistributionCreateParams;
-import com.angellist.nova.api.models.entities.EntityType;
+import io.github.ctotheameron.core.JsonValue;
+import io.github.ctotheameron.models.distributions.Currency;
+import io.github.ctotheameron.models.distributions.DistributionCreateParams;
+import io.github.ctotheameron.models.entities.EntityType;
 
 DistributionCreateParams params = DistributionCreateParams.builder()
     .distributionDate(JsonValue.from(42))
@@ -607,10 +595,10 @@ DistributionCreateParams params = DistributionCreateParams.builder()
     .build();
 ```
 
-The most straightforward way to create a [`JsonValue`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/core/Values.kt) is using its `from(...)` method:
+The most straightforward way to create a [`JsonValue`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) is using its `from(...)` method:
 
 ```java
-import com.angellist.nova.api.core.JsonValue;
+import io.github.ctotheameron.core.JsonValue;
 import java.util.List;
 import java.util.Map;
 
@@ -648,12 +636,12 @@ JsonValue complexValue = JsonValue.from(Map.of(
 
 Normally a `Builder` class's `build` method will throw [`IllegalStateException`](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html) if any required parameter or property is unset.
 
-To forcibly omit a required parameter or property, pass [`JsonMissing`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/core/Values.kt):
+To forcibly omit a required parameter or property, pass [`JsonMissing`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt):
 
 ```java
-import com.angellist.nova.api.core.JsonMissing;
-import com.angellist.nova.api.models.distributions.Currency;
-import com.angellist.nova.api.models.distributions.DistributionCreateParams;
+import io.github.ctotheameron.core.JsonMissing;
+import io.github.ctotheameron.models.distributions.Currency;
+import io.github.ctotheameron.models.distributions.DistributionCreateParams;
 
 DistributionCreateParams params = DistributionCreateParams.builder()
     .name("April 20th Distribution from XYZ Sale")
@@ -676,7 +664,7 @@ DistributionCreateParams params = DistributionCreateParams.builder()
 To access undocumented response properties, call the `_additionalProperties()` method:
 
 ```java
-import com.angellist.nova.api.core.JsonValue;
+import io.github.ctotheameron.core.JsonValue;
 import java.util.Map;
 
 Map<String, JsonValue> additionalProperties = client.distributions().create(params)._additionalProperties();
@@ -706,7 +694,7 @@ String result = secretPropertyValue.accept(new JsonValue.Visitor<>() {
 To access a property's raw JSON value, which may be undocumented, call its `_` prefixed method:
 
 ```java
-import com.angellist.nova.api.core.JsonField;
+import io.github.ctotheameron.core.JsonField;
 import java.time.OffsetDateTime;
 import java.util.Optional;
 
@@ -730,12 +718,12 @@ if (distributionDate.isMissing()) {
 
 In rare cases, the API may return a response that doesn't match the expected type. For example, the SDK may expect a property to contain a `String`, but the API could return something else.
 
-By default, the SDK will not throw an exception in this case. It will throw [`AngellistNovaInvalidDataException`](angellist-nova-java-core/src/main/kotlin/com/angellist/nova/api/errors/AngellistNovaInvalidDataException.kt) only if you directly access the property.
+By default, the SDK will not throw an exception in this case. It will throw [`AngellistNovaInvalidDataException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaInvalidDataException.kt) only if you directly access the property.
 
 If you would prefer to check that the response is completely well-typed upfront, then either call `validate()`:
 
 ```java
-import com.angellist.nova.api.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.Distribution;
 
 Distribution distribution = client.distributions().create(params).validate();
 ```
@@ -743,7 +731,7 @@ Distribution distribution = client.distributions().create(params).validate();
 Or configure the method call to validate the response using the `responseValidation` method:
 
 ```java
-import com.angellist.nova.api.models.distributions.Distribution;
+import io.github.ctotheameron.models.distributions.Distribution;
 
 Distribution distribution = client.distributions().create(
   params, RequestOptions.builder().responseValidation(true).build()
@@ -753,8 +741,8 @@ Distribution distribution = client.distributions().create(
 Or configure the default for all method calls at the client level:
 
 ```java
-import com.angellist.nova.api.client.AngellistNovaClient;
-import com.angellist.nova.api.client.okhttp.AngellistNovaOkHttpClient;
+import io.github.ctotheameron.client.AngellistNovaClient;
+import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
@@ -800,4 +788,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/ctotheameron/nova-api-java-spike-java/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/nova-api-java-spike-java/issues) with questions, bugs, or suggestions.
