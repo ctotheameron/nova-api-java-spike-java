@@ -60,9 +60,9 @@ configure<MavenPublishBaseExtension> {
         }
 
         scm {
-            connection.set("scm:git:git://github.com/stainless-sdks/nova-api-java-spike-java.git")
-            developerConnection.set("scm:git:git://github.com/stainless-sdks/nova-api-java-spike-java.git")
-            url.set("https://github.com/stainless-sdks/nova-api-java-spike-java")
+            connection.set("scm:git:git://github.com/ctotheameron/nova-api-java-spike-java.git")
+            developerConnection.set("scm:git:git://github.com/ctotheameron/nova-api-java-spike-java.git")
+            url.set("https://github.com/ctotheameron/nova-api-java-spike-java")
         }
     }
 }
