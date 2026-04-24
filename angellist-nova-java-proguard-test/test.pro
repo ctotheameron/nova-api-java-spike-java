@@ -1,5 +1,5 @@
 # Specify the entrypoint where ProGuard starts to determine what's reachable.
--keep class com.angellist.nova.api.proguard.** { *; }
+-keep class io.github.ctotheameron.proguard.** { *; }
 
 # For the testing framework.
 -keep class org.junit.** { *; }
