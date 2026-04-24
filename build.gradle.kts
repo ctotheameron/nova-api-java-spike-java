@@ -8,7 +8,7 @@ repositories {
 }
 
 allprojects {
-    group = "com.nova_api_java_spike.api"
+    group = "com.angellist.nova.api"
     version = "0.0.1"
 }
 
@@ -32,7 +32,7 @@ subprojects {
 // Avoid race conditions between `dokkaJavadocCollector` and `dokkaJavadocJar` tasks
 tasks.named("dokkaJavadocCollector").configure {
     subprojects.flatMap { it.tasks }
-        .filter { it.project.name != "nova-api-java-spike-java" && it.name == "dokkaJavadocJar" }
+        .filter { it.project.name != "angellist-nova-java" && it.name == "dokkaJavadocJar" }
         .forEach { mustRunAfter(it) }
 }
 
