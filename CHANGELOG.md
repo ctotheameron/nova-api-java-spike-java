@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 (2026-04-24)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/ctotheameron/nova-api-java-spike-java/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** manual updates ([072187e](https://github.com/ctotheameron/nova-api-java-spike-java/commit/072187e014a2aea92de3bbecff21e9946d0fe1d4))
+* **api:** manual updates ([57a0a39](https://github.com/ctotheameron/nova-api-java-spike-java/commit/57a0a399ad1c91b54158ba8da20233587101f3df))
+
 ## 0.2.0 (2026-04-24)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/ctotheameron/nova-api-java-spike-java/compare/v0.1.0...v0.2.0)
