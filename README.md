@@ -1,7 +1,11 @@
 # Angellist Nova Java API Library
 
-[![Maven Central](https://img.shields.io/maven-central/v/com.angellist.nova.api/angellist-nova-java)](https://central.sonatype.com/artifact/com.angellist.nova.api/angellist-nova-java/0.0.1)
-[![javadoc](https://javadoc.io/badge2/com.angellist.nova.api/angellist-nova-java/0.0.1/javadoc.svg)](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.0.1)
+<!-- x-release-please-start-version -->
+
+[![Maven Central](https://img.shields.io/maven-central/v/com.angellist.nova.api/angellist-nova-java)](https://central.sonatype.com/artifact/com.angellist.nova.api/angellist-nova-java/0.1.0)
+[![javadoc](https://javadoc.io/badge2/com.angellist.nova.api/angellist-nova-java/0.1.0/javadoc.svg)](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.1.0)
+
+<!-- x-release-please-end -->
 
 The Angellist Nova Java SDK provides convenient access to the [Angellist Nova REST API](https://docs.angellist.com/nova-api) from applications written in Java.
 
@@ -16,14 +20,20 @@ Use the Angellist Nova MCP Server to enable AI assistants to interact with this 
 
 > Note: You may need to set environment variables in your MCP client.
 
-The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.0.1).
+<!-- x-release-please-start-version -->
+
+The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.angellist.nova.api/angellist-nova-java/0.1.0).
+
+<!-- x-release-please-end -->
 
 ## Installation
+
+<!-- x-release-please-start-version -->
 
 ### Gradle
 
 ```kotlin
-implementation("com.angellist.nova.api:angellist-nova-java:0.0.1")
+implementation("com.angellist.nova.api:angellist-nova-java:0.1.0")
 ```
 
 ### Maven
@@ -32,9 +42,11 @@ implementation("com.angellist.nova.api:angellist-nova-java:0.0.1")
 <dependency>
   <groupId>com.angellist.nova.api</groupId>
   <artifactId>angellist-nova-java</artifactId>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
 </dependency>
 ```
+
+<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -788,4 +800,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/nova-api-java-spike-java/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/ctotheameron/nova-api-java-spike-java/issues) with questions, bugs, or suggestions.
