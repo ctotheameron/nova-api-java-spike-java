@@ -396,12 +396,9 @@ private constructor(
          *
          * See this table for the available options:
          *
-         * |Setter          |System property                        |Environment variable       |Required|Default value                          |
-         * |----------------|---------------------------------------|---------------------------|--------|---------------------------------------|
-         * |`clientId`      |`angellistnova.angellistClientId`      |`ANGELLIST_CLIENT_ID`      |false   |-                                      |
-         * |`clientSecret`  |`angellistnova.angellistClientSecret`  |`ANGELLIST_CLIENT_SECRET`  |false   |-                                      |
-         * |`organizationId`|`angellistnova.angellistOrganizationId`|`ANGELLIST_ORGANIZATION_ID`|false   |-                                      |
-         * |`baseUrl`       |`angellistnova.baseUrl`                |`ANGELLIST_NOVA_BASE_URL`  |true    |`"https://portal.angellist.com/api/v1"`|
+         * |Setter   |System property        |Environment variable     |Required|Default value                          |
+         * |---------|-----------------------|-------------------------|--------|---------------------------------------|
+         * |`baseUrl`|`angellistnova.baseUrl`|`ANGELLIST_NOVA_BASE_URL`|true    |`"https://portal.angellist.com/api/v1"`|
          *
          * System properties take precedence over environment variables.
          */
@@ -409,15 +406,6 @@ private constructor(
             (System.getProperty("angellistnova.baseUrl")
                     ?: System.getenv("ANGELLIST_NOVA_BASE_URL"))
                 ?.let { baseUrl(it) }
-            (System.getProperty("angellistnova.angellistClientId")
-                    ?: System.getenv("ANGELLIST_CLIENT_ID"))
-                ?.let { clientId(it) }
-            (System.getProperty("angellistnova.angellistClientSecret")
-                    ?: System.getenv("ANGELLIST_CLIENT_SECRET"))
-                ?.let { clientSecret(it) }
-            (System.getProperty("angellistnova.angellistOrganizationId")
-                    ?: System.getenv("ANGELLIST_ORGANIZATION_ID"))
-                ?.let { organizationId(it) }
         }
 
         /**
