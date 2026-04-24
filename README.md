@@ -2,8 +2,8 @@
 
 <!-- x-release-please-start-version -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ctotheameron/angellist-nova-java)](https://central.sonatype.com/artifact/io.github.ctotheameron/angellist-nova-java/0.1.0)
-[![javadoc](https://javadoc.io/badge2/io.github.ctotheameron/angellist-nova-java/0.1.0/javadoc.svg)](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.1.0)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ctotheameron/nova-api-java-spike)](https://central.sonatype.com/artifact/io.github.ctotheameron/nova-api-java-spike/0.1.0)
+[![javadoc](https://javadoc.io/badge2/io.github.ctotheameron/nova-api-java-spike/0.1.0/javadoc.svg)](https://javadoc.io/doc/io.github.ctotheameron/nova-api-java-spike/0.1.0)
 
 <!-- x-release-please-end -->
 
@@ -22,7 +22,7 @@ Use the Angellist Nova MCP Server to enable AI assistants to interact with this 
 
 <!-- x-release-please-start-version -->
 
-The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.1.0).
+The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/io.github.ctotheameron/nova-api-java-spike/0.1.0).
 
 <!-- x-release-please-end -->
 
@@ -33,7 +33,7 @@ The REST API documentation can be found on [docs.angellist.com](https://docs.ang
 ### Gradle
 
 ```kotlin
-implementation("io.github.ctotheameron:angellist-nova-java:0.1.0")
+implementation("io.github.ctotheameron:nova-api-java-spike:0.1.0")
 ```
 
 ### Maven
@@ -41,7 +41,7 @@ implementation("io.github.ctotheameron:angellist-nova-java:0.1.0")
 ```xml
 <dependency>
   <groupId>io.github.ctotheameron</groupId>
-  <artifactId>angellist-nova-java</artifactId>
+  <artifactId>nova-api-java-spike</artifactId>
   <version>0.1.0</version>
 </dependency>
 ```
@@ -335,26 +335,26 @@ Distribution parsedDistribution = distribution.parse();
 
 The SDK throws custom unchecked exception types:
 
-- [`AngellistNovaServiceException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
+- [`AngellistNovaServiceException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
 
   | Status | Exception                                                                                                                                  |
   | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-  | 400    | [`BadRequestException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/BadRequestException.kt)                     |
-  | 401    | [`UnauthorizedException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/UnauthorizedException.kt)                 |
-  | 403    | [`PermissionDeniedException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/PermissionDeniedException.kt)         |
-  | 404    | [`NotFoundException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/NotFoundException.kt)                         |
-  | 422    | [`UnprocessableEntityException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/UnprocessableEntityException.kt)   |
-  | 429    | [`RateLimitException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/RateLimitException.kt)                       |
-  | 5xx    | [`InternalServerException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/InternalServerException.kt)             |
-  | others | [`UnexpectedStatusCodeException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/UnexpectedStatusCodeException.kt) |
+  | 400    | [`BadRequestException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/BadRequestException.kt)                     |
+  | 401    | [`UnauthorizedException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/UnauthorizedException.kt)                 |
+  | 403    | [`PermissionDeniedException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/PermissionDeniedException.kt)         |
+  | 404    | [`NotFoundException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/NotFoundException.kt)                         |
+  | 422    | [`UnprocessableEntityException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/UnprocessableEntityException.kt)   |
+  | 429    | [`RateLimitException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/RateLimitException.kt)                       |
+  | 5xx    | [`InternalServerException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/InternalServerException.kt)             |
+  | others | [`UnexpectedStatusCodeException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/UnexpectedStatusCodeException.kt) |
 
-- [`AngellistNovaIoException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaIoException.kt): I/O networking errors.
+- [`AngellistNovaIoException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaIoException.kt): I/O networking errors.
 
-- [`AngellistNovaRetryableException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaRetryableException.kt): Generic error indicating a failure that could be retried by the client.
+- [`AngellistNovaRetryableException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaRetryableException.kt): Generic error indicating a failure that could be retried by the client.
 
-- [`AngellistNovaInvalidDataException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
+- [`AngellistNovaInvalidDataException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
 
-- [`AngellistNovaException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
+- [`AngellistNovaException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
 
 ## Logging
 
@@ -374,7 +374,7 @@ export ANGELLIST_NOVA_LOG=debug
 
 ## ProGuard and R8
 
-Although the SDK uses reflection, it is still usable with [ProGuard](https://github.com/Guardsquare/proguard) and [R8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization) because `angellist-nova-java-core` is published with a [configuration file](angellist-nova-java-core/src/main/resources/META-INF/proguard/angellist-nova-java-core.pro) containing [keep rules](https://www.guardsquare.com/manual/configuration/usage).
+Although the SDK uses reflection, it is still usable with [ProGuard](https://github.com/Guardsquare/proguard) and [R8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization) because `nova-api-java-spike-core` is published with a [configuration file](nova-api-java-spike-core/src/main/resources/META-INF/proguard/nova-api-java-spike-core.pro) containing [keep rules](https://www.guardsquare.com/manual/configuration/usage).
 
 ProGuard and R8 should automatically detect and use the published rules, but you can also manually copy the keep rules if necessary.
 
@@ -384,7 +384,7 @@ The SDK depends on [Jackson](https://github.com/FasterXML/jackson) for JSON seri
 
 The SDK throws an exception if it detects an incompatible Jackson version at runtime (e.g. if the default version was overridden in your Maven or Gradle config).
 
-If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt).
+If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`AngellistNovaOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt).
 
 > [!CAUTION]
 > We make no guarantee that the SDK works correctly when the Jackson version check is disabled.
@@ -524,15 +524,15 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
 
 The SDK consists of three artifacts:
 
-- `angellist-nova-java-core`
+- `nova-api-java-spike-core`
   - Contains core SDK logic
   - Does not depend on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`AngellistNovaClient`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClient.kt), [`AngellistNovaClientAsync`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsync.kt), [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt), and [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), all of which can work with any HTTP client
-- `angellist-nova-java-client-okhttp`
+  - Exposes [`AngellistNovaClient`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClient.kt), [`AngellistNovaClientAsync`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsync.kt), [`AngellistNovaClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt), and [`AngellistNovaClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), all of which can work with any HTTP client
+- `nova-api-java-spike-client-okhttp`
   - Depends on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) and [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), which provide a way to construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) and [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), respectively, using OkHttp
-- `angellist-nova-java`
-  - Depends on and exposes the APIs of both `angellist-nova-java-core` and `angellist-nova-java-client-okhttp`
+  - Exposes [`AngellistNovaOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) and [`AngellistNovaOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), which provide a way to construct [`AngellistNovaClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) and [`AngellistNovaClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), respectively, using OkHttp
+- `nova-api-java-spike`
+  - Depends on and exposes the APIs of both `nova-api-java-spike-core` and `nova-api-java-spike-client-okhttp`
   - Does not have its own logic
 
 This structure allows replacing the SDK's default HTTP client without pulling in unnecessary dependencies.
@@ -544,17 +544,17 @@ This structure allows replacing the SDK's default HTTP client without pulling in
 
 To use a customized `OkHttpClient`:
 
-1. Replace your [`angellist-nova-java` dependency](#installation) with `angellist-nova-java-core`
-2. Copy `angellist-nova-java-client-okhttp`'s [`OkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/OkHttpClient.kt) class into your code and customize it
-3. Construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your customized client
+1. Replace your [`nova-api-java-spike` dependency](#installation) with `nova-api-java-spike-core`
+2. Copy `nova-api-java-spike-client-okhttp`'s [`OkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/OkHttpClient.kt) class into your code and customize it
+3. Construct [`AngellistNovaClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your customized client
 
 ### Completely custom HTTP client
 
 To use a completely custom HTTP client:
 
-1. Replace your [`angellist-nova-java` dependency](#installation) with `angellist-nova-java-core`
-2. Write a class that implements the [`HttpClient`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/http/HttpClient.kt) interface
-3. Construct [`AngellistNovaClientImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](angellist-nova-java-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your new client class
+1. Replace your [`nova-api-java-spike` dependency](#installation) with `nova-api-java-spike-core`
+2. Write a class that implements the [`HttpClient`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/http/HttpClient.kt) interface
+3. Construct [`AngellistNovaClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientImpl.kt) or [`AngellistNovaClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaClientAsyncImpl.kt), similarly to [`AngellistNovaOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClient.kt) or [`AngellistNovaOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaOkHttpClientAsync.kt), using your new client class
 
 ## Undocumented API functionality
 
@@ -577,7 +577,7 @@ DistributionCreateParams params = DistributionCreateParams.builder()
 
 These can be accessed on the built object later using the `_additionalHeaders()`, `_additionalQueryParams()`, and `_additionalBodyProperties()` methods.
 
-To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) object to its setter:
+To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) object to its setter:
 
 ```java
 import io.github.ctotheameron.core.JsonValue;
@@ -607,7 +607,7 @@ DistributionCreateParams params = DistributionCreateParams.builder()
     .build();
 ```
 
-The most straightforward way to create a [`JsonValue`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) is using its `from(...)` method:
+The most straightforward way to create a [`JsonValue`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) is using its `from(...)` method:
 
 ```java
 import io.github.ctotheameron.core.JsonValue;
@@ -648,7 +648,7 @@ JsonValue complexValue = JsonValue.from(Map.of(
 
 Normally a `Builder` class's `build` method will throw [`IllegalStateException`](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html) if any required parameter or property is unset.
 
-To forcibly omit a required parameter or property, pass [`JsonMissing`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt):
+To forcibly omit a required parameter or property, pass [`JsonMissing`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt):
 
 ```java
 import io.github.ctotheameron.core.JsonMissing;
@@ -730,7 +730,7 @@ if (distributionDate.isMissing()) {
 
 In rare cases, the API may return a response that doesn't match the expected type. For example, the SDK may expect a property to contain a `String`, but the API could return something else.
 
-By default, the SDK will not throw an exception in this case. It will throw [`AngellistNovaInvalidDataException`](angellist-nova-java-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaInvalidDataException.kt) only if you directly access the property.
+By default, the SDK will not throw an exception in this case. It will throw [`AngellistNovaInvalidDataException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaInvalidDataException.kt) only if you directly access the property.
 
 If you would prefer to check that the response is completely well-typed upfront, then either call `validate()`:
 

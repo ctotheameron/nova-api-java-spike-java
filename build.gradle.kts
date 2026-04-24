@@ -31,6 +31,6 @@ subprojects {
 // Avoid race conditions between `dokkaJavadocCollector` and `dokkaJavadocJar` tasks
 tasks.named("dokkaJavadocCollector").configure {
     subprojects.flatMap { it.tasks }
-        .filter { it.project.name != "angellist-nova-java" && it.name == "dokkaJavadocJar" }
+        .filter { it.project.name != "nova-api-java-spike" && it.name == "dokkaJavadocJar" }
         .forEach { mustRunAfter(it) }
 }

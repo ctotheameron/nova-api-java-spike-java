@@ -15,7 +15,7 @@ buildscript {
 }
 
 dependencies {
-    testImplementation(project(":angellist-nova-java"))
+    testImplementation(project(":nova-api-java-spike"))
     testImplementation(kotlin("test"))
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.9.3")
     testImplementation("org.assertj:assertj-core:3.27.7")
@@ -51,7 +51,7 @@ val proguardJar by tasks.registering(proguard.gradle.ProGuardTask::class) {
     }
 
     configuration("./test.pro")
-    configuration("../angellist-nova-java-core/src/main/resources/META-INF/proguard/angellist-nova-java-core.pro")
+    configuration("../nova-api-java-spike-core/src/main/resources/META-INF/proguard/nova-api-java-spike-core.pro")
 }
 
 val testProGuard by tasks.registering(JavaExec::class) {
@@ -78,7 +78,7 @@ val r8Jar by tasks.registering(JavaExec::class) {
         "--output", r8JarPath,
         "--lib", System.getProperty("java.home"),
         "--pg-conf", "./test.pro",
-        "--pg-conf", "../angellist-nova-java-core/src/main/resources/META-INF/proguard/angellist-nova-java-core.pro",
+        "--pg-conf", "../nova-api-java-spike-core/src/main/resources/META-INF/proguard/nova-api-java-spike-core.pro",
         "--pg-map-output", "${layout.buildDirectory.get()}/r8-mapping.txt",
         tasks.shadowJar.get().archiveFile.get().asFile.absolutePath,
     )

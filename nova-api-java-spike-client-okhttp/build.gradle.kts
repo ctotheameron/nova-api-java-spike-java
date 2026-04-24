@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    api(project(":angellist-nova-java-core"))
+    api(project(":nova-api-java-spike-core"))
 
     implementation("com.squareup.okhttp3:okhttp:4.12.0")
     implementation("com.squareup.okhttp3:logging-interceptor:4.12.0")

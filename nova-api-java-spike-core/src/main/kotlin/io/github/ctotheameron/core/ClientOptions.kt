@@ -21,7 +21,7 @@ private constructor(
     /**
      * The HTTP client to use in the SDK.
      *
-     * Use the one published in `angellist-nova-java-client-okhttp` or implement your own.
+     * Use the one published in `nova-api-java-spike-client-okhttp` or implement your own.
      *
      * This class takes ownership of the client and closes it when closed.
      */
@@ -186,7 +186,7 @@ private constructor(
         /**
          * The HTTP client to use in the SDK.
          *
-         * Use the one published in `angellist-nova-java-client-okhttp` or implement your own.
+         * Use the one published in `nova-api-java-spike-client-okhttp` or implement your own.
          *
          * This class takes ownership of the client and closes it when closed.
          */
