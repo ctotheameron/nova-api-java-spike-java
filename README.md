@@ -1,43 +1,31 @@
-# Angellist Nova Java Spike Java API Library
+# Nova API Java Spike Java API Library
 
-<!-- x-release-please-start-version -->
+[![Maven Central](https://img.shields.io/maven-central/v/com.nova_api_java_spike.api/nova-api-java-spike-java)](https://central.sonatype.com/artifact/com.nova_api_java_spike.api/nova-api-java-spike-java/0.0.1)
+[![javadoc](https://javadoc.io/badge2/com.nova_api_java_spike.api/nova-api-java-spike-java/0.0.1/javadoc.svg)](https://javadoc.io/doc/com.nova_api_java_spike.api/nova-api-java-spike-java/0.0.1)
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ctotheameron/nova-api-java-spike)](https://central.sonatype.com/artifact/io.github.ctotheameron/nova-api-java-spike/0.3.0)
-[![javadoc](https://javadoc.io/badge2/io.github.ctotheameron/nova-api-java-spike/0.3.0/javadoc.svg)](https://javadoc.io/doc/io.github.ctotheameron/nova-api-java-spike/0.3.0)
-
-<!-- x-release-please-end -->
-
-The Angellist Nova Java Spike Java SDK provides convenient access to the Angellist Nova Java Spike REST API from applications written in Java.
+The Nova API Java Spike Java SDK provides convenient access to the Nova API Java Spike REST API from applications written in Java.
 
 It is generated with [Stainless](https://www.stainless.com/).
 
-<!-- x-release-please-start-version -->
-
-Javadocs are available on [javadoc.io](https://javadoc.io/doc/io.github.ctotheameron/nova-api-java-spike/0.3.0).
-
-<!-- x-release-please-end -->
+Javadocs are available on [javadoc.io](https://javadoc.io/doc/com.nova_api_java_spike.api/nova-api-java-spike-java/0.0.1).
 
 ## Installation
-
-<!-- x-release-please-start-version -->
 
 ### Gradle
 
 ```kotlin
-implementation("io.github.ctotheameron:nova-api-java-spike:0.3.0")
+implementation("com.nova_api_java_spike.api:nova-api-java-spike-java:0.0.1")
 ```
 
 ### Maven
 
 ```xml
 <dependency>
-  <groupId>io.github.ctotheameron</groupId>
-  <artifactId>nova-api-java-spike</artifactId>
-  <version>0.3.0</version>
+  <groupId>com.nova_api_java_spike.api</groupId>
+  <artifactId>nova-api-java-spike-java</artifactId>
+  <version>0.0.1</version>
 </dependency>
 ```
-
-<!-- x-release-please-end -->
 
 ## Requirements
 
@@ -46,43 +34,16 @@ This library requires Java 8 or later.
 ## Usage
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
-import io.github.ctotheameron.models.distributions.Currency;
-import io.github.ctotheameron.models.distributions.Distribution;
-import io.github.ctotheameron.models.distributions.DistributionCreateParams;
-import io.github.ctotheameron.models.entities.EntityType;
-import java.time.OffsetDateTime;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.models.Order;
+import com.nova_api_java_spike.api.models.store.orders.OrderCreateParams;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
-    // Configures using the `angellistnovajavaspike.baseUrl` system property
-    // Or configures using the `ANGELLIST_NOVA_JAVA_SPIKE_BASE_URL` environment variable
-    .fromEnv()
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
-    .build();
+// Configures using the `novaapijavaspike.petstoreApiKey` and `novaapijavaspike.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `NOVA_API_JAVA_SPIKE_BASE_URL` environment variables
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.fromEnv();
 
-DistributionCreateParams params = DistributionCreateParams.builder()
-    .distributionDate(OffsetDateTime.parse("2026-07-01T00:00:00Z"))
-    .name("Q4 2026 Distribution")
-    .addPayment(DistributionCreateParams.Payment.builder()
-        .amount(5000000L)
-        .currency(Currency.USD)
-        .entity(DistributionCreateParams.Payment.Entity.NewEntityInput.builder()
-            .name("Acme Ventures LP")
-            .type(EntityType.LLC)
-            .build())
-        .addContact(DistributionCreateParams.Payment.Contact.builder()
-            .notify(true)
-            .person(DistributionCreateParams.Payment.Contact.Person.NewPersonInput.builder()
-                .name("Jane Doe")
-                .email("jane@acmeventures.com")
-                .build())
-            .build())
-        .build())
-    .vehicleId("550e8400-e29b-41d4-a716-446655440000")
-    .build();
-Distribution distribution = client.distributions().create(params);
+Order order = client.store().orders().create();
 ```
 
 ## Client configuration
@@ -90,50 +51,45 @@ Distribution distribution = client.distributions().create(params);
 Configure the client using system properties or environment variables:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
-    // Configures using the `angellistnovajavaspike.baseUrl` system property
-    // Or configures using the `ANGELLIST_NOVA_JAVA_SPIKE_BASE_URL` environment variable
-    .fromEnv()
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
-    .build();
+// Configures using the `novaapijavaspike.petstoreApiKey` and `novaapijavaspike.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `NOVA_API_JAVA_SPIKE_BASE_URL` environment variables
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.fromEnv();
 ```
 
 Or manually:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
+    .apiKey("My API Key")
     .build();
 ```
 
 Or using a combination of the two approaches:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
-    // Configures using the `angellistnovajavaspike.baseUrl` system property
-    // Or configures using the `ANGELLIST_NOVA_JAVA_SPIKE_BASE_URL` environment variable
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
+    // Configures using the `novaapijavaspike.petstoreApiKey` and `novaapijavaspike.baseUrl` system properties
+    // Or configures using the `PETSTORE_API_KEY` and `NOVA_API_JAVA_SPIKE_BASE_URL` environment variables
     .fromEnv()
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
+    .apiKey("My API Key")
     .build();
 ```
 
 See this table for the available options:
 
-| Setter    | System property                  | Environment variable                 | Required | Default value                           |
-| --------- | -------------------------------- | ------------------------------------ | -------- | --------------------------------------- |
-| `baseUrl` | `angellistnovajavaspike.baseUrl` | `ANGELLIST_NOVA_JAVA_SPIKE_BASE_URL` | true     | `"https://portal.angellist.com/api/v1"` |
+| Setter    | System property                   | Environment variable           | Required | Default value                           |
+| --------- | --------------------------------- | ------------------------------ | -------- | --------------------------------------- |
+| `apiKey`  | `novaapijavaspike.petstoreApiKey` | `PETSTORE_API_KEY`             | true     | -                                       |
+| `baseUrl` | `novaapijavaspike.baseUrl`        | `NOVA_API_JAVA_SPIKE_BASE_URL` | true     | `"https://petstore3.swagger.io/api/v3"` |
 
 System properties take precedence over environment variables.
 
@@ -146,9 +102,9 @@ System properties take precedence over environment variables.
 To temporarily use a modified client configuration, while reusing the same connection and thread pools, call `withOptions()` on any client or service:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
 
-AngellistNovaJavaSpikeClient clientWithOptions = client.withOptions(optionsBuilder -> {
+NovaApiJavaSpikeClient clientWithOptions = client.withOptions(optionsBuilder -> {
     optionsBuilder.baseUrl("https://example.com");
     optionsBuilder.maxRetries(42);
 });
@@ -158,9 +114,9 @@ The `withOptions()` method does not affect the original client or service.
 
 ## Requests and responses
 
-To send a request to the Angellist Nova Java Spike API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a Java class.
+To send a request to the Nova API Java Spike API, build an instance of some `Params` class and pass it to the corresponding client method. When the response is received, it will be deserialized into an instance of a Java class.
 
-For example, `client.distributions().create(...)` should be called with an instance of `DistributionCreateParams`, and it will return an instance of `Distribution`.
+For example, `client.store().orders().create(...)` should be called with an instance of `OrderCreateParams`, and it will return an instance of `Order`.
 
 ## Immutability
 
@@ -175,87 +131,33 @@ Because each class is immutable, builder modification will _never_ affect alread
 The default client is synchronous. To switch to asynchronous execution, call the `async()` method:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
-import io.github.ctotheameron.models.distributions.Currency;
-import io.github.ctotheameron.models.distributions.Distribution;
-import io.github.ctotheameron.models.distributions.DistributionCreateParams;
-import io.github.ctotheameron.models.entities.EntityType;
-import java.time.OffsetDateTime;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.models.Order;
+import com.nova_api_java_spike.api.models.store.orders.OrderCreateParams;
 import java.util.concurrent.CompletableFuture;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
-    // Configures using the `angellistnovajavaspike.baseUrl` system property
-    // Or configures using the `ANGELLIST_NOVA_JAVA_SPIKE_BASE_URL` environment variable
-    .fromEnv()
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
-    .build();
+// Configures using the `novaapijavaspike.petstoreApiKey` and `novaapijavaspike.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `NOVA_API_JAVA_SPIKE_BASE_URL` environment variables
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.fromEnv();
 
-DistributionCreateParams params = DistributionCreateParams.builder()
-    .distributionDate(OffsetDateTime.parse("2026-07-01T00:00:00Z"))
-    .name("Q4 2026 Distribution")
-    .addPayment(DistributionCreateParams.Payment.builder()
-        .amount(5000000L)
-        .currency(Currency.USD)
-        .entity(DistributionCreateParams.Payment.Entity.NewEntityInput.builder()
-            .name("Acme Ventures LP")
-            .type(EntityType.LLC)
-            .build())
-        .addContact(DistributionCreateParams.Payment.Contact.builder()
-            .notify(true)
-            .person(DistributionCreateParams.Payment.Contact.Person.NewPersonInput.builder()
-                .name("Jane Doe")
-                .email("jane@acmeventures.com")
-                .build())
-            .build())
-        .build())
-    .vehicleId("550e8400-e29b-41d4-a716-446655440000")
-    .build();
-CompletableFuture<Distribution> distribution = client.async().distributions().create(params);
+CompletableFuture<Order> order = client.async().store().orders().create();
 ```
 
 Or create an asynchronous client from the beginning:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClientAsync;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClientAsync;
-import io.github.ctotheameron.models.distributions.Currency;
-import io.github.ctotheameron.models.distributions.Distribution;
-import io.github.ctotheameron.models.distributions.DistributionCreateParams;
-import io.github.ctotheameron.models.entities.EntityType;
-import java.time.OffsetDateTime;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClientAsync;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClientAsync;
+import com.nova_api_java_spike.api.models.Order;
+import com.nova_api_java_spike.api.models.store.orders.OrderCreateParams;
 import java.util.concurrent.CompletableFuture;
 
-AngellistNovaJavaSpikeClientAsync client = AngellistNovaJavaSpikeOkHttpClientAsync.builder()
-    // Configures using the `angellistnovajavaspike.baseUrl` system property
-    // Or configures using the `ANGELLIST_NOVA_JAVA_SPIKE_BASE_URL` environment variable
-    .fromEnv()
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
-    .build();
+// Configures using the `novaapijavaspike.petstoreApiKey` and `novaapijavaspike.baseUrl` system properties
+// Or configures using the `PETSTORE_API_KEY` and `NOVA_API_JAVA_SPIKE_BASE_URL` environment variables
+NovaApiJavaSpikeClientAsync client = NovaApiJavaSpikeOkHttpClientAsync.fromEnv();
 
-DistributionCreateParams params = DistributionCreateParams.builder()
-    .distributionDate(OffsetDateTime.parse("2026-07-01T00:00:00Z"))
-    .name("Q4 2026 Distribution")
-    .addPayment(DistributionCreateParams.Payment.builder()
-        .amount(5000000L)
-        .currency(Currency.USD)
-        .entity(DistributionCreateParams.Payment.Entity.NewEntityInput.builder()
-            .name("Acme Ventures LP")
-            .type(EntityType.LLC)
-            .build())
-        .addContact(DistributionCreateParams.Payment.Contact.builder()
-            .notify(true)
-            .person(DistributionCreateParams.Payment.Contact.Person.NewPersonInput.builder()
-                .name("Jane Doe")
-                .email("jane@acmeventures.com")
-                .build())
-            .build())
-        .build())
-    .vehicleId("550e8400-e29b-41d4-a716-446655440000")
-    .build();
-CompletableFuture<Distribution> distribution = client.distributions().create(params);
+CompletableFuture<Order> order = client.store().orders().create();
 ```
 
 The asynchronous client supports the same options as the synchronous one, except most methods return `CompletableFuture`s.
@@ -267,119 +169,69 @@ The SDK defines methods that deserialize responses into instances of Java classe
 To access this data, prefix any HTTP method call on a client or service with `withRawResponse()`:
 
 ```java
-import io.github.ctotheameron.core.http.Headers;
-import io.github.ctotheameron.core.http.HttpResponseFor;
-import io.github.ctotheameron.models.distributions.Currency;
-import io.github.ctotheameron.models.distributions.Distribution;
-import io.github.ctotheameron.models.distributions.DistributionCreateParams;
-import io.github.ctotheameron.models.entities.EntityType;
-import io.github.ctotheameron.models.entities.InternationalWireInfo;
-import io.github.ctotheameron.models.entities.WireAddress;
-import java.time.OffsetDateTime;
+import com.nova_api_java_spike.api.core.http.Headers;
+import com.nova_api_java_spike.api.core.http.HttpResponseFor;
+import com.nova_api_java_spike.api.models.store.StoreListInventoryParams;
+import com.nova_api_java_spike.api.models.store.StoreListInventoryResponse;
 
-DistributionCreateParams params = DistributionCreateParams.builder()
-    .distributionDate(OffsetDateTime.parse("2026-07-01T00:00:00Z"))
-    .name("Q4 2026 Distribution")
-    .addPayment(DistributionCreateParams.Payment.builder()
-        .amount(5000000L)
-        .currency(Currency.USD)
-        .entity(DistributionCreateParams.Payment.Entity.NewEntityInput.builder()
-            .name("Acme Ventures LP")
-            .type(EntityType.LLC)
-            .addExternalReference("acme-001")
-            .build())
-        .addContact(DistributionCreateParams.Payment.Contact.builder()
-            .notify(true)
-            .person(DistributionCreateParams.Payment.Contact.Person.NewPersonInput.builder()
-                .name("Jane Doe")
-                .email("jane@acmeventures.com")
-                .addExternalReference("acme-jane-001")
-                .build())
-            .build())
-        .build())
-    .addPayment(DistributionCreateParams.Payment.builder()
-        .amount(7500000L)
-        .currency(Currency.USD)
-        .entity(DistributionCreateParams.Payment.Entity.NewEntityInput.builder()
-            .name("Globex Capital Partners")
-            .type(EntityType.PARTNERSHIP)
-            .wireInfo(InternationalWireInfo.builder()
-                .swiftCode("DEUTDEFFXXX")
-                .beneficiaryName("Globex Capital Partners")
-                .accountNumber("DE89370400440532013000")
-                .bankName("Deutsche Bank AG")
-                .address(WireAddress.builder()
-                    .street1("Taunusanlage 12")
-                    .city("Frankfurt")
-                    .countryCode("DE")
-                    .build())
-                .build())
-            .build())
-        .addContact(DistributionCreateParams.Payment.Contact.builder()
-            .notify(false)
-            .person("7f8d9e10-1234-4abc-8def-1234567890ab")
-            .build())
-        .build())
-    .vehicleId("550e8400-e29b-41d4-a716-446655440000")
-    .build();
-HttpResponseFor<Distribution> distribution = client.distributions().withRawResponse().create(params);
+HttpResponseFor<StoreListInventoryResponse> response = client.store().withRawResponse().listInventory();
 
-int statusCode = distribution.statusCode();
-Headers headers = distribution.headers();
+int statusCode = response.statusCode();
+Headers headers = response.headers();
 ```
 
 You can still deserialize the response into an instance of a Java class if needed:
 
 ```java
-import io.github.ctotheameron.models.distributions.Distribution;
+import com.nova_api_java_spike.api.models.store.StoreListInventoryResponse;
 
-Distribution parsedDistribution = distribution.parse();
+StoreListInventoryResponse parsedResponse = response.parse();
 ```
 
 ## Error handling
 
 The SDK throws custom unchecked exception types:
 
-- [`AngellistNovaJavaSpikeServiceException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaJavaSpikeServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
+- [`NovaApiJavaSpikeServiceException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/NovaApiJavaSpikeServiceException.kt): Base class for HTTP errors. See this table for which exception subclass is thrown for each HTTP status code:
 
-  | Status | Exception                                                                                                                                  |
-  | ------ | ------------------------------------------------------------------------------------------------------------------------------------------ |
-  | 400    | [`BadRequestException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/BadRequestException.kt)                     |
-  | 401    | [`UnauthorizedException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/UnauthorizedException.kt)                 |
-  | 403    | [`PermissionDeniedException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/PermissionDeniedException.kt)         |
-  | 404    | [`NotFoundException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/NotFoundException.kt)                         |
-  | 422    | [`UnprocessableEntityException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/UnprocessableEntityException.kt)   |
-  | 429    | [`RateLimitException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/RateLimitException.kt)                       |
-  | 5xx    | [`InternalServerException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/InternalServerException.kt)             |
-  | others | [`UnexpectedStatusCodeException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/UnexpectedStatusCodeException.kt) |
+  | Status | Exception                                                                                                                                            |
+  | ------ | ---------------------------------------------------------------------------------------------------------------------------------------------------- |
+  | 400    | [`BadRequestException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/BadRequestException.kt)                     |
+  | 401    | [`UnauthorizedException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/UnauthorizedException.kt)                 |
+  | 403    | [`PermissionDeniedException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/PermissionDeniedException.kt)         |
+  | 404    | [`NotFoundException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/NotFoundException.kt)                         |
+  | 422    | [`UnprocessableEntityException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/UnprocessableEntityException.kt)   |
+  | 429    | [`RateLimitException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/RateLimitException.kt)                       |
+  | 5xx    | [`InternalServerException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/InternalServerException.kt)             |
+  | others | [`UnexpectedStatusCodeException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/UnexpectedStatusCodeException.kt) |
 
-- [`AngellistNovaJavaSpikeIoException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaJavaSpikeIoException.kt): I/O networking errors.
+- [`NovaApiJavaSpikeIoException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/NovaApiJavaSpikeIoException.kt): I/O networking errors.
 
-- [`AngellistNovaJavaSpikeRetryableException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaJavaSpikeRetryableException.kt): Generic error indicating a failure that could be retried by the client.
+- [`NovaApiJavaSpikeRetryableException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/NovaApiJavaSpikeRetryableException.kt): Generic error indicating a failure that could be retried by the client.
 
-- [`AngellistNovaJavaSpikeInvalidDataException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaJavaSpikeInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
+- [`NovaApiJavaSpikeInvalidDataException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/NovaApiJavaSpikeInvalidDataException.kt): Failure to interpret successfully parsed data. For example, when accessing a property that's supposed to be required, but the API unexpectedly omitted it from the response.
 
-- [`AngellistNovaJavaSpikeException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaJavaSpikeException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
+- [`NovaApiJavaSpikeException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/NovaApiJavaSpikeException.kt): Base class for all exceptions. Most errors will result in one of the previously mentioned ones, but completely generic errors may be thrown using the base class.
 
 ## Logging
 
 The SDK uses the standard [OkHttp logging interceptor](https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor).
 
-Enable logging by setting the `ANGELLIST_NOVA_JAVA_SPIKE_LOG` environment variable to `info`:
+Enable logging by setting the `NOVA_API_JAVA_SPIKE_LOG` environment variable to `info`:
 
 ```sh
-export ANGELLIST_NOVA_JAVA_SPIKE_LOG=info
+export NOVA_API_JAVA_SPIKE_LOG=info
 ```
 
 Or to `debug` for more verbose logging:
 
 ```sh
-export ANGELLIST_NOVA_JAVA_SPIKE_LOG=debug
+export NOVA_API_JAVA_SPIKE_LOG=debug
 ```
 
 ## ProGuard and R8
 
-Although the SDK uses reflection, it is still usable with [ProGuard](https://github.com/Guardsquare/proguard) and [R8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization) because `nova-api-java-spike-core` is published with a [configuration file](nova-api-java-spike-core/src/main/resources/META-INF/proguard/nova-api-java-spike-core.pro) containing [keep rules](https://www.guardsquare.com/manual/configuration/usage).
+Although the SDK uses reflection, it is still usable with [ProGuard](https://github.com/Guardsquare/proguard) and [R8](https://developer.android.com/topic/performance/app-optimization/enable-app-optimization) because `nova-api-java-spike-java-core` is published with a [configuration file](nova-api-java-spike-java-core/src/main/resources/META-INF/proguard/nova-api-java-spike-java-core.pro) containing [keep rules](https://www.guardsquare.com/manual/configuration/usage).
 
 ProGuard and R8 should automatically detect and use the published rules, but you can also manually copy the keep rules if necessary.
 
@@ -389,7 +241,7 @@ The SDK depends on [Jackson](https://github.com/FasterXML/jackson) for JSON seri
 
 The SDK throws an exception if it detects an incompatible Jackson version at runtime (e.g. if the default version was overridden in your Maven or Gradle config).
 
-If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`AngellistNovaJavaSpikeOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClient.kt) or [`AngellistNovaJavaSpikeOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClientAsync.kt).
+If the SDK threw an exception, but you're _certain_ the version is compatible, then disable the version check using the `checkJacksonVersionCompatibility` on [`NovaApiJavaSpikeOkHttpClient`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClient.kt) or [`NovaApiJavaSpikeOkHttpClientAsync`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClientAsync.kt).
 
 > [!CAUTION]
 > We make no guarantee that the SDK works correctly when the Jackson version check is disabled.
@@ -415,14 +267,12 @@ The API may also explicitly instruct the SDK to retry or not retry a request.
 To set a custom number of retries, configure the client using the `maxRetries` method:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
     .fromEnv()
     .maxRetries(4)
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -433,25 +283,21 @@ Requests time out after 1 minute by default.
 To set a custom timeout, configure the method call using the `timeout` method:
 
 ```java
-import io.github.ctotheameron.models.distributions.Distribution;
+import com.nova_api_java_spike.api.models.store.StoreListInventoryResponse;
 
-Distribution distribution = client.distributions().create(
-  params, RequestOptions.builder().timeout(Duration.ofSeconds(30)).build()
-);
+StoreListInventoryResponse response = client.store().listInventory(RequestOptions.builder().timeout(Duration.ofSeconds(30)).build());
 ```
 
 Or configure the default for all method calls at the client level:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 import java.time.Duration;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
     .fromEnv()
     .timeout(Duration.ofSeconds(30))
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -460,20 +306,18 @@ AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder
 To route requests through a proxy, configure the client using the `proxy` method:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
     .fromEnv()
     .proxy(new Proxy(
       Proxy.Type.HTTP, new InetSocketAddress(
         "https://example.com", 8080
       )
     ))
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -482,17 +326,15 @@ AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder
 To customize the underlying OkHttp connection pool, configure the client using the `maxIdleConnections` and `keepAliveDuration` methods:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 import java.time.Duration;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
     .fromEnv()
     // If `maxIdleConnections` is set, then `keepAliveDuration` must be set, and vice versa.
     .maxIdleConnections(10)
     .keepAliveDuration(Duration.ofMinutes(2))
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -507,33 +349,15 @@ If both options are unset, OkHttp's default connection pool settings are used.
 To configure how HTTPS connections are secured, configure the client using the `sslSocketFactory`, `trustManager`, and `hostnameVerifier` methods:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
     .fromEnv()
     // If `sslSocketFactory` is set, then `trustManager` must be set, and vice versa.
     .sslSocketFactory(yourSSLSocketFactory)
     .trustManager(yourTrustManager)
     .hostnameVerifier(yourHostnameVerifier)
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
-    .build();
-```
-
-### Environments
-
-The SDK sends requests to the production by default. To send requests to a different environment, configure the client like so:
-
-```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
-
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
-    .fromEnv()
-    .sandbox()
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -541,15 +365,15 @@ AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder
 
 The SDK consists of three artifacts:
 
-- `nova-api-java-spike-core`
+- `nova-api-java-spike-java-core`
   - Contains core SDK logic
   - Does not depend on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`AngellistNovaJavaSpikeClient`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClient.kt), [`AngellistNovaJavaSpikeClientAsync`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientAsync.kt), [`AngellistNovaJavaSpikeClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientImpl.kt), and [`AngellistNovaJavaSpikeClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientAsyncImpl.kt), all of which can work with any HTTP client
-- `nova-api-java-spike-client-okhttp`
+  - Exposes [`NovaApiJavaSpikeClient`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClient.kt), [`NovaApiJavaSpikeClientAsync`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientAsync.kt), [`NovaApiJavaSpikeClientImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientImpl.kt), and [`NovaApiJavaSpikeClientAsyncImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientAsyncImpl.kt), all of which can work with any HTTP client
+- `nova-api-java-spike-java-client-okhttp`
   - Depends on [OkHttp](https://square.github.io/okhttp)
-  - Exposes [`AngellistNovaJavaSpikeOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClient.kt) and [`AngellistNovaJavaSpikeOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClientAsync.kt), which provide a way to construct [`AngellistNovaJavaSpikeClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientImpl.kt) and [`AngellistNovaJavaSpikeClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientAsyncImpl.kt), respectively, using OkHttp
-- `nova-api-java-spike`
-  - Depends on and exposes the APIs of both `nova-api-java-spike-core` and `nova-api-java-spike-client-okhttp`
+  - Exposes [`NovaApiJavaSpikeOkHttpClient`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClient.kt) and [`NovaApiJavaSpikeOkHttpClientAsync`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClientAsync.kt), which provide a way to construct [`NovaApiJavaSpikeClientImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientImpl.kt) and [`NovaApiJavaSpikeClientAsyncImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientAsyncImpl.kt), respectively, using OkHttp
+- `nova-api-java-spike-java`
+  - Depends on and exposes the APIs of both `nova-api-java-spike-java-core` and `nova-api-java-spike-java-client-okhttp`
   - Does not have its own logic
 
 This structure allows replacing the SDK's default HTTP client without pulling in unnecessary dependencies.
@@ -561,17 +385,17 @@ This structure allows replacing the SDK's default HTTP client without pulling in
 
 To use a customized `OkHttpClient`:
 
-1. Replace your [`nova-api-java-spike` dependency](#installation) with `nova-api-java-spike-core`
-2. Copy `nova-api-java-spike-client-okhttp`'s [`OkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/OkHttpClient.kt) class into your code and customize it
-3. Construct [`AngellistNovaJavaSpikeClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientImpl.kt) or [`AngellistNovaJavaSpikeClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientAsyncImpl.kt), similarly to [`AngellistNovaJavaSpikeOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClient.kt) or [`AngellistNovaJavaSpikeOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClientAsync.kt), using your customized client
+1. Replace your [`nova-api-java-spike-java` dependency](#installation) with `nova-api-java-spike-java-core`
+2. Copy `nova-api-java-spike-java-client-okhttp`'s [`OkHttpClient`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/OkHttpClient.kt) class into your code and customize it
+3. Construct [`NovaApiJavaSpikeClientImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientImpl.kt) or [`NovaApiJavaSpikeClientAsyncImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientAsyncImpl.kt), similarly to [`NovaApiJavaSpikeOkHttpClient`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClient.kt) or [`NovaApiJavaSpikeOkHttpClientAsync`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClientAsync.kt), using your customized client
 
 ### Completely custom HTTP client
 
 To use a completely custom HTTP client:
 
-1. Replace your [`nova-api-java-spike` dependency](#installation) with `nova-api-java-spike-core`
-2. Write a class that implements the [`HttpClient`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/http/HttpClient.kt) interface
-3. Construct [`AngellistNovaJavaSpikeClientImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientImpl.kt) or [`AngellistNovaJavaSpikeClientAsyncImpl`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/client/AngellistNovaJavaSpikeClientAsyncImpl.kt), similarly to [`AngellistNovaJavaSpikeOkHttpClient`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClient.kt) or [`AngellistNovaJavaSpikeOkHttpClientAsync`](nova-api-java-spike-client-okhttp/src/main/kotlin/io/github/ctotheameron/client/okhttp/AngellistNovaJavaSpikeOkHttpClientAsync.kt), using your new client class
+1. Replace your [`nova-api-java-spike-java` dependency](#installation) with `nova-api-java-spike-java-core`
+2. Write a class that implements the [`HttpClient`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/core/http/HttpClient.kt) interface
+3. Construct [`NovaApiJavaSpikeClientImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientImpl.kt) or [`NovaApiJavaSpikeClientAsyncImpl`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/client/NovaApiJavaSpikeClientAsyncImpl.kt), similarly to [`NovaApiJavaSpikeOkHttpClient`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClient.kt) or [`NovaApiJavaSpikeOkHttpClientAsync`](nova-api-java-spike-java-client-okhttp/src/main/kotlin/com/nova_api_java_spike/api/client/okhttp/NovaApiJavaSpikeOkHttpClientAsync.kt), using your new client class
 
 ## Undocumented API functionality
 
@@ -582,10 +406,10 @@ The SDK is typed for convenient usage of the documented API. However, it also su
 To set undocumented parameters, call the `putAdditionalHeader`, `putAdditionalQueryParam`, or `putAdditionalBodyProperty` methods on any `Params` class:
 
 ```java
-import io.github.ctotheameron.core.JsonValue;
-import io.github.ctotheameron.models.distributions.DistributionCreateParams;
+import com.nova_api_java_spike.api.core.JsonValue;
+import com.nova_api_java_spike.api.models.store.orders.OrderCreateParams;
 
-DistributionCreateParams params = DistributionCreateParams.builder()
+OrderCreateParams params = OrderCreateParams.builder()
     .putAdditionalHeader("Secret-Header", "42")
     .putAdditionalQueryParam("secret_query_param", "42")
     .putAdditionalBodyProperty("secretProperty", JsonValue.from("42"))
@@ -594,40 +418,18 @@ DistributionCreateParams params = DistributionCreateParams.builder()
 
 These can be accessed on the built object later using the `_additionalHeaders()`, `_additionalQueryParams()`, and `_additionalBodyProperties()` methods.
 
-To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) object to its setter:
+To set a documented parameter or property to an undocumented or not yet supported _value_, pass a [`JsonValue`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/core/Values.kt) object to its setter:
 
 ```java
-import io.github.ctotheameron.core.JsonValue;
-import io.github.ctotheameron.models.distributions.Currency;
-import io.github.ctotheameron.models.distributions.DistributionCreateParams;
-import io.github.ctotheameron.models.entities.EntityType;
+import com.nova_api_java_spike.api.models.store.orders.OrderCreateParams;
 
-DistributionCreateParams params = DistributionCreateParams.builder()
-    .distributionDate(JsonValue.from(42))
-    .name("Q4 2026 Distribution")
-    .addPayment(DistributionCreateParams.Payment.builder()
-        .amount(5000000L)
-        .currency(Currency.USD)
-        .entity(DistributionCreateParams.Payment.Entity.NewEntityInput.builder()
-            .name("Acme Ventures LP")
-            .type(EntityType.LLC)
-            .build())
-        .addContact(DistributionCreateParams.Payment.Contact.builder()
-            .notify(true)
-            .person(DistributionCreateParams.Payment.Contact.Person.NewPersonInput.builder()
-                .name("Jane Doe")
-                .email("jane@acmeventures.com")
-                .build())
-            .build())
-        .build())
-    .vehicleId("550e8400-e29b-41d4-a716-446655440000")
-    .build();
+OrderCreateParams params = OrderCreateParams.builder().build();
 ```
 
-The most straightforward way to create a [`JsonValue`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt) is using its `from(...)` method:
+The most straightforward way to create a [`JsonValue`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/core/Values.kt) is using its `from(...)` method:
 
 ```java
-import io.github.ctotheameron.core.JsonValue;
+import com.nova_api_java_spike.api.core.JsonValue;
 import java.util.List;
 import java.util.Map;
 
@@ -665,26 +467,20 @@ JsonValue complexValue = JsonValue.from(Map.of(
 
 Normally a `Builder` class's `build` method will throw [`IllegalStateException`](https://docs.oracle.com/javase/8/docs/api/java/lang/IllegalStateException.html) if any required parameter or property is unset.
 
-To forcibly omit a required parameter or property, pass [`JsonMissing`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/core/Values.kt):
+To forcibly omit a required parameter or property, pass [`JsonMissing`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/core/Values.kt):
 
 ```java
-import io.github.ctotheameron.core.JsonMissing;
-import io.github.ctotheameron.models.distributions.Currency;
-import io.github.ctotheameron.models.distributions.DistributionCreateParams;
+import com.nova_api_java_spike.api.core.JsonMissing;
+import com.nova_api_java_spike.api.models.pets.Pet;
+import com.nova_api_java_spike.api.models.pets.PetCreateParams;
+import com.nova_api_java_spike.api.models.store.orders.OrderCreateParams;
 
-DistributionCreateParams params = DistributionCreateParams.builder()
-    .name("April 20th Distribution from XYZ Sale")
-    .addPayment(DistributionCreateParams.Payment.builder()
-        .amount(1000L)
-        .addContact(DistributionCreateParams.Payment.Contact.builder()
-            .notify(true)
-            .person("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-            .build())
-        .currency(Currency.USD)
-        .entity("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
+OrderCreateParams params = PetCreateParams.builder()
+    .pet(Pet.builder()
+        .name("doggie")
+        .addPhotoUrl("string")
         .build())
-    .vehicleId("182bd5e5-6e1a-4fe4-a799-aa6d9a6ab26e")
-    .distributionDate(JsonMissing.of())
+    .name(JsonMissing.of())
     .build();
 ```
 
@@ -693,10 +489,10 @@ DistributionCreateParams params = DistributionCreateParams.builder()
 To access undocumented response properties, call the `_additionalProperties()` method:
 
 ```java
-import io.github.ctotheameron.core.JsonValue;
+import com.nova_api_java_spike.api.core.JsonValue;
 import java.util.Map;
 
-Map<String, JsonValue> additionalProperties = client.distributions().create(params)._additionalProperties();
+Map<String, JsonValue> additionalProperties = client.store().orders().create(params)._additionalProperties();
 JsonValue secretPropertyValue = additionalProperties.get("secretProperty");
 
 String result = secretPropertyValue.accept(new JsonValue.Visitor<>() {
@@ -723,23 +519,22 @@ String result = secretPropertyValue.accept(new JsonValue.Visitor<>() {
 To access a property's raw JSON value, which may be undocumented, call its `_` prefixed method:
 
 ```java
-import io.github.ctotheameron.core.JsonField;
-import java.time.OffsetDateTime;
+import com.nova_api_java_spike.api.core.JsonField;
 import java.util.Optional;
 
-JsonField<OffsetDateTime> distributionDate = client.distributions().create(params)._distributionDate();
+JsonField<Object> field = client.store().orders().create(params)._field();
 
-if (distributionDate.isMissing()) {
+if (field.isMissing()) {
   // The property is absent from the JSON response
-} else if (distributionDate.isNull()) {
+} else if (field.isNull()) {
   // The property was set to literal null
 } else {
   // Check if value was provided as a string
   // Other methods include `asNumber()`, `asBoolean()`, etc.
-  Optional<String> jsonString = distributionDate.asString();
+  Optional<String> jsonString = field.asString();
 
   // Try to deserialize into a custom type
-  MyClass myObject = distributionDate.asUnknown().orElseThrow().convert(MyClass.class);
+  MyClass myObject = field.asUnknown().orElseThrow().convert(MyClass.class);
 }
 ```
 
@@ -747,37 +542,33 @@ if (distributionDate.isMissing()) {
 
 In rare cases, the API may return a response that doesn't match the expected type. For example, the SDK may expect a property to contain a `String`, but the API could return something else.
 
-By default, the SDK will not throw an exception in this case. It will throw [`AngellistNovaJavaSpikeInvalidDataException`](nova-api-java-spike-core/src/main/kotlin/io/github/ctotheameron/errors/AngellistNovaJavaSpikeInvalidDataException.kt) only if you directly access the property.
+By default, the SDK will not throw an exception in this case. It will throw [`NovaApiJavaSpikeInvalidDataException`](nova-api-java-spike-java-core/src/main/kotlin/com/nova_api_java_spike/api/errors/NovaApiJavaSpikeInvalidDataException.kt) only if you directly access the property.
 
 If you would prefer to check that the response is completely well-typed upfront, then either call `validate()`:
 
 ```java
-import io.github.ctotheameron.models.distributions.Distribution;
+import com.nova_api_java_spike.api.models.Order;
 
-Distribution distribution = client.distributions().create(params).validate();
+Order order = client.store().orders().create(params).validate();
 ```
 
 Or configure the method call to validate the response using the `responseValidation` method:
 
 ```java
-import io.github.ctotheameron.models.distributions.Distribution;
+import com.nova_api_java_spike.api.models.Order;
 
-Distribution distribution = client.distributions().create(
-  params, RequestOptions.builder().responseValidation(true).build()
-);
+Order order = client.store().orders().create(RequestOptions.builder().responseValidation(true).build());
 ```
 
 Or configure the default for all method calls at the client level:
 
 ```java
-import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient;
-import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient;
+import com.nova_api_java_spike.api.client.NovaApiJavaSpikeClient;
+import com.nova_api_java_spike.api.client.okhttp.NovaApiJavaSpikeOkHttpClient;
 
-AngellistNovaJavaSpikeClient client = AngellistNovaJavaSpikeOkHttpClient.builder()
+NovaApiJavaSpikeClient client = NovaApiJavaSpikeOkHttpClient.builder()
     .fromEnv()
     .responseValidation(true)
-    .clientId("My Client ID")
-    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -819,4 +610,4 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/ctotheameron/nova-api-java-spike-java/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/nova-api-java-spike-java/issues) with questions, bugs, or suggestions.
