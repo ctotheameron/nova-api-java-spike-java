@@ -12,7 +12,8 @@ import io.github.ctotheameron.services.blocking.PersonService
 import io.github.ctotheameron.services.blocking.PersonServiceImpl
 import java.util.function.Consumer
 
-class AngellistNovaClientImpl(private val clientOptions: ClientOptions) : AngellistNovaClient {
+class NovaApiJavaSpikeClientImpl(private val clientOptions: ClientOptions) :
+    NovaApiJavaSpikeClient {
 
     private val clientOptionsWithUserAgent =
         if (clientOptions.headers.names().contains("User-Agent")) clientOptions
@@ -23,11 +24,11 @@ class AngellistNovaClientImpl(private val clientOptions: ClientOptions) : Angell
                 .build()
 
     // Pass the original clientOptions so that this client sets its own User-Agent.
-    private val async: AngellistNovaClientAsync by lazy {
-        AngellistNovaClientAsyncImpl(clientOptions)
+    private val async: NovaApiJavaSpikeClientAsync by lazy {
+        NovaApiJavaSpikeClientAsyncImpl(clientOptions)
     }
 
-    private val withRawResponse: AngellistNovaClient.WithRawResponse by lazy {
+    private val withRawResponse: NovaApiJavaSpikeClient.WithRawResponse by lazy {
         WithRawResponseImpl(clientOptions)
     }
 
@@ -39,12 +40,12 @@ class AngellistNovaClientImpl(private val clientOptions: ClientOptions) : Angell
         DistributionServiceImpl(clientOptionsWithUserAgent)
     }
 
-    override fun async(): AngellistNovaClientAsync = async
+    override fun async(): NovaApiJavaSpikeClientAsync = async
 
-    override fun withRawResponse(): AngellistNovaClient.WithRawResponse = withRawResponse
+    override fun withRawResponse(): NovaApiJavaSpikeClient.WithRawResponse = withRawResponse
 
-    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): AngellistNovaClient =
-        AngellistNovaClientImpl(clientOptions.toBuilder().apply(modifier::accept).build())
+    override fun withOptions(modifier: Consumer<ClientOptions.Builder>): NovaApiJavaSpikeClient =
+        NovaApiJavaSpikeClientImpl(clientOptions.toBuilder().apply(modifier::accept).build())
 
     override fun entities(): EntityService = entities
 
@@ -56,7 +57,7 @@ class AngellistNovaClientImpl(private val clientOptions: ClientOptions) : Angell
     override fun close() = clientOptions.close()
 
     class WithRawResponseImpl internal constructor(private val clientOptions: ClientOptions) :
-        AngellistNovaClient.WithRawResponse {
+        NovaApiJavaSpikeClient.WithRawResponse {
 
         private val entities: EntityService.WithRawResponse by lazy {
             EntityServiceImpl.WithRawResponseImpl(clientOptions)
@@ -72,8 +73,8 @@ class AngellistNovaClientImpl(private val clientOptions: ClientOptions) : Angell
 
         override fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
-        ): AngellistNovaClient.WithRawResponse =
-            AngellistNovaClientImpl.WithRawResponseImpl(
+        ): NovaApiJavaSpikeClient.WithRawResponse =
+            NovaApiJavaSpikeClientImpl.WithRawResponseImpl(
                 clientOptions.toBuilder().apply(modifier::accept).build()
             )
 

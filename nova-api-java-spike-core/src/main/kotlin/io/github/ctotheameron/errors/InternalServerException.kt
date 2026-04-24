@@ -14,7 +14,7 @@ private constructor(
     private val headers: Headers,
     private val body: JsonValue,
     cause: Throwable?,
-) : AngellistNovaServiceException("$statusCode: $body", cause) {
+) : NovaApiJavaSpikeServiceException("$statusCode: $body", cause) {
 
     override fun statusCode(): Int = statusCode
 

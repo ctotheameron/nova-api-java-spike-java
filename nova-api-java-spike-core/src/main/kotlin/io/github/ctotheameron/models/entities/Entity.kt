@@ -13,7 +13,7 @@ import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.checkKnown
 import io.github.ctotheameron.core.checkRequired
 import io.github.ctotheameron.core.toImmutable
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 import java.util.Collections
 import java.util.Objects
 import kotlin.jvm.optionals.getOrNull
@@ -41,7 +41,7 @@ private constructor(
     /**
      * UUID of an existing entity
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun id(): String = id.getRequired("id")
@@ -49,7 +49,7 @@ private constructor(
     /**
      * Your own identifiers for this entity
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun externalReferences(): List<String> = externalReferences.getRequired("external_references")
@@ -57,13 +57,13 @@ private constructor(
     /**
      * Legal name of the entity
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun name(): String = name.getRequired("name")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun type(): EntityType = type.getRequired("type")
@@ -266,7 +266,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: NovaApiJavaSpikeInvalidDataException) {
             false
         }
 

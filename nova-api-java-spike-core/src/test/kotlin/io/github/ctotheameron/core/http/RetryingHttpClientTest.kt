@@ -18,7 +18,7 @@ import com.github.tomakehurst.wiremock.stubbing.Scenario
 import io.github.ctotheameron.client.okhttp.OkHttpClient
 import io.github.ctotheameron.core.RequestOptions
 import io.github.ctotheameron.core.Sleeper
-import io.github.ctotheameron.errors.AngellistNovaRetryableException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeRetryableException
 import java.io.InputStream
 import java.time.Clock
 import java.time.Duration
@@ -317,7 +317,7 @@ internal class RetryingHttpClientTest {
                 ): HttpResponse {
                     callCount++
                     if (callCount == 1) {
-                        throw AngellistNovaRetryableException("Simulated retryable failure")
+                        throw NovaApiJavaSpikeRetryableException("Simulated retryable failure")
                     }
                     return httpClient.execute(request, requestOptions)
                 }
@@ -330,7 +330,7 @@ internal class RetryingHttpClientTest {
                     if (callCount == 1) {
                         val future = CompletableFuture<HttpResponse>()
                         future.completeExceptionally(
-                            AngellistNovaRetryableException("Simulated retryable failure")
+                            NovaApiJavaSpikeRetryableException("Simulated retryable failure")
                         )
                         return future
                     }

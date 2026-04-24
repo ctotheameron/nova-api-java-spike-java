@@ -54,7 +54,7 @@ configure<MavenPublishBaseExtension> {
 
         developers {
             developer {
-                name.set("Angellist Nova")
+                name.set("Nova API Java Spike")
                 email.set("support@angellist.com")
             }
         }

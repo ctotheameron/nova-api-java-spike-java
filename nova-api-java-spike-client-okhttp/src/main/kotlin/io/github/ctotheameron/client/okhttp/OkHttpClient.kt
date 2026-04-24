@@ -8,7 +8,7 @@ import io.github.ctotheameron.core.http.HttpMethod
 import io.github.ctotheameron.core.http.HttpRequest
 import io.github.ctotheameron.core.http.HttpRequestBody
 import io.github.ctotheameron.core.http.HttpResponse
-import io.github.ctotheameron.errors.AngellistNovaIoException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeIoException
 import java.io.IOException
 import java.io.InputStream
 import java.net.Proxy
@@ -43,7 +43,7 @@ internal constructor(@JvmSynthetic internal val okHttpClient: okhttp3.OkHttpClie
         return try {
             call.execute().toResponse()
         } catch (e: IOException) {
-            throw AngellistNovaIoException("Request failed", e)
+            throw NovaApiJavaSpikeIoException("Request failed", e)
         } finally {
             request.body?.close()
         }
@@ -63,7 +63,7 @@ internal constructor(@JvmSynthetic internal val okHttpClient: okhttp3.OkHttpClie
                 }
 
                 override fun onFailure(call: Call, e: IOException) {
-                    future.completeExceptionally(AngellistNovaIoException("Request failed", e))
+                    future.completeExceptionally(NovaApiJavaSpikeIoException("Request failed", e))
                 }
             }
         )
@@ -88,7 +88,7 @@ internal constructor(@JvmSynthetic internal val okHttpClient: okhttp3.OkHttpClie
         val clientBuilder = okHttpClient.newBuilder()
 
         val logLevel =
-            when (System.getenv("ANGELLIST_NOVA_LOG")?.lowercase()) {
+            when (System.getenv("NOVA_API_JAVA_SPIKE_LOG")?.lowercase()) {
                 "info" -> HttpLoggingInterceptor.Level.BASIC
                 "debug" -> HttpLoggingInterceptor.Level.BODY
                 else -> null

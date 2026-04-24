@@ -5,7 +5,7 @@ package io.github.ctotheameron.models.distributions
 import com.fasterxml.jackson.annotation.JsonCreator
 import io.github.ctotheameron.core.Enum
 import io.github.ctotheameron.core.JsonField
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 
 /** ISO 4217 currency code (USD-only currently) */
 class Currency @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
@@ -65,13 +65,13 @@ class Currency @JsonCreator private constructor(private val value: JsonField<Str
      * Use the [value] method instead if you're uncertain the value is always known and don't want
      * to throw for the unknown case.
      *
-     * @throws AngellistNovaInvalidDataException if this class instance's value is a not a known
+     * @throws NovaApiJavaSpikeInvalidDataException if this class instance's value is a not a known
      *   member.
      */
     fun known(): Known =
         when (this) {
             USD -> Known.USD
-            else -> throw AngellistNovaInvalidDataException("Unknown Currency: $value")
+            else -> throw NovaApiJavaSpikeInvalidDataException("Unknown Currency: $value")
         }
 
     /**
@@ -80,12 +80,12 @@ class Currency @JsonCreator private constructor(private val value: JsonField<Str
      * This differs from the [toString] method because that method is primarily for debugging and
      * generally doesn't throw.
      *
-     * @throws AngellistNovaInvalidDataException if this class instance's value does not have the
+     * @throws NovaApiJavaSpikeInvalidDataException if this class instance's value does not have the
      *   expected primitive type.
      */
     fun asString(): String =
         _value().asString().orElseThrow {
-            AngellistNovaInvalidDataException("Value is not a String")
+            NovaApiJavaSpikeInvalidDataException("Value is not a String")
         }
 
     private var validated: Boolean = false
@@ -103,7 +103,7 @@ class Currency @JsonCreator private constructor(private val value: JsonField<Str
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: NovaApiJavaSpikeInvalidDataException) {
             false
         }
 

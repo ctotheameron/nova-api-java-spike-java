@@ -6,7 +6,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import io.github.ctotheameron.core.http.HttpResponse
 import io.github.ctotheameron.core.http.HttpResponse.Handler
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 
 @JvmSynthetic
 internal inline fun <reified T> jsonHandler(jsonMapper: JsonMapper): Handler<T> =
@@ -15,6 +15,6 @@ internal inline fun <reified T> jsonHandler(jsonMapper: JsonMapper): Handler<T> 
             try {
                 jsonMapper.readValue(response.body(), jacksonTypeRef())
             } catch (e: Exception) {
-                throw AngellistNovaInvalidDataException("Error reading response", e)
+                throw NovaApiJavaSpikeInvalidDataException("Error reading response", e)
             }
     }

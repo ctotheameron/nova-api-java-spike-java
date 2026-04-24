@@ -12,8 +12,8 @@ import com.github.tomakehurst.wiremock.client.WireMock.stubFor
 import com.github.tomakehurst.wiremock.client.WireMock.verify
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo
 import com.github.tomakehurst.wiremock.junit5.WireMockTest
-import io.github.ctotheameron.client.AngellistNovaClient
-import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient
+import io.github.ctotheameron.client.NovaApiJavaSpikeClient
+import io.github.ctotheameron.client.okhttp.NovaApiJavaSpikeOkHttpClient
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.models.distributions.Currency
 import io.github.ctotheameron.models.distributions.DistributionCreateParams
@@ -26,12 +26,12 @@ import org.junit.jupiter.api.parallel.ResourceLock
 @ResourceLock("https://github.com/wiremock/wiremock/issues/169")
 internal class ServiceParamsTest {
 
-    private lateinit var client: AngellistNovaClient
+    private lateinit var client: NovaApiJavaSpikeClient
 
     @BeforeEach
     fun beforeEach(wmRuntimeInfo: WireMockRuntimeInfo) {
         client =
-            AngellistNovaOkHttpClient.builder()
+            NovaApiJavaSpikeOkHttpClient.builder()
                 .baseUrl(wmRuntimeInfo.httpBaseUrl)
                 .clientId("My Client ID")
                 .clientSecret("My Client Secret")
