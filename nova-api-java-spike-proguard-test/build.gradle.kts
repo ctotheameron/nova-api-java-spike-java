@@ -1,5 +1,5 @@
 plugins {
-    id("angellist-nova.kotlin")
+    id("nova-api-java-spike.kotlin")
     id("com.gradleup.shadow") version "8.3.8"
 }
 

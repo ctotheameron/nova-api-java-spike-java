@@ -5,7 +5,7 @@ package io.github.ctotheameron.models.distributions
 import com.fasterxml.jackson.annotation.JsonCreator
 import io.github.ctotheameron.core.Enum
 import io.github.ctotheameron.core.JsonField
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 
 class DistributionStatus @JsonCreator private constructor(private val value: JsonField<String>) :
     Enum {
@@ -88,7 +88,7 @@ class DistributionStatus @JsonCreator private constructor(private val value: Jso
      * Use the [value] method instead if you're uncertain the value is always known and don't want
      * to throw for the unknown case.
      *
-     * @throws AngellistNovaInvalidDataException if this class instance's value is a not a known
+     * @throws NovaApiJavaSpikeInvalidDataException if this class instance's value is a not a known
      *   member.
      */
     fun known(): Known =
@@ -98,7 +98,7 @@ class DistributionStatus @JsonCreator private constructor(private val value: Jso
             APPROVED -> Known.APPROVED
             EXECUTED -> Known.EXECUTED
             CANCELLED -> Known.CANCELLED
-            else -> throw AngellistNovaInvalidDataException("Unknown DistributionStatus: $value")
+            else -> throw NovaApiJavaSpikeInvalidDataException("Unknown DistributionStatus: $value")
         }
 
     /**
@@ -107,12 +107,12 @@ class DistributionStatus @JsonCreator private constructor(private val value: Jso
      * This differs from the [toString] method because that method is primarily for debugging and
      * generally doesn't throw.
      *
-     * @throws AngellistNovaInvalidDataException if this class instance's value does not have the
+     * @throws NovaApiJavaSpikeInvalidDataException if this class instance's value does not have the
      *   expected primitive type.
      */
     fun asString(): String =
         _value().asString().orElseThrow {
-            AngellistNovaInvalidDataException("Value is not a String")
+            NovaApiJavaSpikeInvalidDataException("Value is not a String")
         }
 
     private var validated: Boolean = false
@@ -130,7 +130,7 @@ class DistributionStatus @JsonCreator private constructor(private val value: Jso
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: NovaApiJavaSpikeInvalidDataException) {
             false
         }
 

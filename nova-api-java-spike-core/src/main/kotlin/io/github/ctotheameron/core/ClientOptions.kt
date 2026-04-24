@@ -396,15 +396,15 @@ private constructor(
          *
          * See this table for the available options:
          *
-         * |Setter   |System property        |Environment variable     |Required|Default value                          |
-         * |---------|-----------------------|-------------------------|--------|---------------------------------------|
-         * |`baseUrl`|`angellistnova.baseUrl`|`ANGELLIST_NOVA_BASE_URL`|true    |`"https://portal.angellist.com/api/v1"`|
+         * |Setter   |System property           |Environment variable          |Required|Default value                          |
+         * |---------|--------------------------|------------------------------|--------|---------------------------------------|
+         * |`baseUrl`|`novaapijavaspike.baseUrl`|`NOVA_API_JAVA_SPIKE_BASE_URL`|true    |`"https://portal.angellist.com/api/v1"`|
          *
          * System properties take precedence over environment variables.
          */
         fun fromEnv() = apply {
-            (System.getProperty("angellistnova.baseUrl")
-                    ?: System.getenv("ANGELLIST_NOVA_BASE_URL"))
+            (System.getProperty("novaapijavaspike.baseUrl")
+                    ?: System.getenv("NOVA_API_JAVA_SPIKE_BASE_URL"))
                 ?.let { baseUrl(it) }
         }
 

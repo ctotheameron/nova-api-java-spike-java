@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.json.JsonMapper
 import com.fasterxml.jackson.databind.node.JsonNodeType
 import io.github.ctotheameron.core.MultipartField
 import io.github.ctotheameron.core.toImmutable
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 import java.io.ByteArrayInputStream
 import java.io.InputStream
 import java.io.OutputStream
@@ -126,7 +126,7 @@ private fun serializePart(name: String, node: JsonNode): Sequence<Pair<String, I
                                 JsonNodeType.ARRAY,
                                 JsonNodeType.OBJECT,
                                 JsonNodeType.POJO ->
-                                    throw AngellistNovaInvalidDataException(
+                                    throw NovaApiJavaSpikeInvalidDataException(
                                         "Unexpected JsonNode type in array: ${element.nodeType}"
                                     )
                             }
@@ -140,7 +140,7 @@ private fun serializePart(name: String, node: JsonNode): Sequence<Pair<String, I
             }
         JsonNodeType.POJO,
         null ->
-            throw AngellistNovaInvalidDataException("Unexpected JsonNode type: ${node.nodeType}")
+            throw NovaApiJavaSpikeInvalidDataException("Unexpected JsonNode type: ${node.nodeType}")
     }
 
 private class MultipartBody
