@@ -11,7 +11,7 @@ import io.github.ctotheameron.core.JsonField
 import io.github.ctotheameron.core.JsonMissing
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.checkRequired
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 import java.util.Collections
 import java.util.Objects
 import java.util.Optional
@@ -58,32 +58,32 @@ private constructor(
     /**
      * Bank account number
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun accountNumber(): String = accountNumber.getRequired("account_number")
 
     /**
      * Name of the bank
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun bankName(): String = bankName.getRequired("bank_name")
 
     /**
      * Name of the account holder, as registered with the bank
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun beneficiaryName(): String = beneficiaryName.getRequired("beneficiary_name")
 
     /**
      * ABA routing number
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun routingNumber(): String = routingNumber.getRequired("routing_number")
 
@@ -101,8 +101,8 @@ private constructor(
     /**
      * Bank branch code (e.g. sort code, IFSC, etc.)
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun branchCode(): Optional<String> = branchCode.getOptional("branch_code")
 
@@ -336,7 +336,7 @@ private constructor(
         routingNumber()
         _type().let {
             if (it != JsonValue.from("ach")) {
-                throw AngellistNovaInvalidDataException("'type' is invalid, received $it")
+                throw AngellistNovaJavaSpikeInvalidDataException("'type' is invalid, received $it")
             }
         }
         branchCode()
@@ -347,7 +347,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: AngellistNovaJavaSpikeInvalidDataException) {
             false
         }
 

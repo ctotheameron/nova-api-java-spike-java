@@ -3,8 +3,8 @@
 package io.github.ctotheameron.client.okhttp
 
 import com.fasterxml.jackson.databind.json.JsonMapper
-import io.github.ctotheameron.client.AngellistNovaClientAsync
-import io.github.ctotheameron.client.AngellistNovaClientAsyncImpl
+import io.github.ctotheameron.client.AngellistNovaJavaSpikeClientAsync
+import io.github.ctotheameron.client.AngellistNovaJavaSpikeClientAsyncImpl
 import io.github.ctotheameron.core.ClientOptions
 import io.github.ctotheameron.core.Sleeper
 import io.github.ctotheameron.core.Timeout
@@ -23,14 +23,17 @@ import javax.net.ssl.X509TrustManager
 import kotlin.jvm.optionals.getOrNull
 
 /**
- * A class that allows building an instance of [AngellistNovaClientAsync] with [OkHttpClient] as the
- * underlying [HttpClient].
+ * A class that allows building an instance of [AngellistNovaJavaSpikeClientAsync] with
+ * [OkHttpClient] as the underlying [HttpClient].
  */
-class AngellistNovaOkHttpClientAsync private constructor() {
+class AngellistNovaJavaSpikeOkHttpClientAsync private constructor() {
 
     companion object {
 
-        /** Returns a mutable builder for constructing an instance of [AngellistNovaClientAsync]. */
+        /**
+         * Returns a mutable builder for constructing an instance of
+         * [AngellistNovaJavaSpikeClientAsync].
+         */
         @JvmStatic fun builder() = Builder()
 
         /**
@@ -38,10 +41,10 @@ class AngellistNovaOkHttpClientAsync private constructor() {
          *
          * @see ClientOptions.Builder.fromEnv
          */
-        @JvmStatic fun fromEnv(): AngellistNovaClientAsync = builder().fromEnv().build()
+        @JvmStatic fun fromEnv(): AngellistNovaJavaSpikeClientAsync = builder().fromEnv().build()
     }
 
-    /** A builder for [AngellistNovaOkHttpClientAsync]. */
+    /** A builder for [AngellistNovaJavaSpikeOkHttpClientAsync]. */
     class Builder internal constructor() {
 
         private var clientOptions: ClientOptions.Builder = ClientOptions.builder()
@@ -370,12 +373,12 @@ class AngellistNovaOkHttpClientAsync private constructor() {
         fun fromEnv() = apply { clientOptions.fromEnv() }
 
         /**
-         * Returns an immutable instance of [AngellistNovaClientAsync].
+         * Returns an immutable instance of [AngellistNovaJavaSpikeClientAsync].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
          */
-        fun build(): AngellistNovaClientAsync =
-            AngellistNovaClientAsyncImpl(
+        fun build(): AngellistNovaJavaSpikeClientAsync =
+            AngellistNovaJavaSpikeClientAsyncImpl(
                 clientOptions
                     .httpClient(
                         OkHttpClient.builder()

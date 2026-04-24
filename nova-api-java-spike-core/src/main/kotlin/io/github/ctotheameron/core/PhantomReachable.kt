@@ -2,7 +2,7 @@
 
 package io.github.ctotheameron.core
 
-import io.github.ctotheameron.errors.AngellistNovaException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeException
 import java.lang.reflect.InvocationTargetException
 
 /**
@@ -46,7 +46,7 @@ private val closeWhenPhantomReachable: ((Any, () -> Unit) -> Unit)? by lazy {
                         is Error -> throw cause
                     }
                 }
-                throw AngellistNovaException("Unexpected reflective invocation failure", e)
+                throw AngellistNovaJavaSpikeException("Unexpected reflective invocation failure", e)
             }
         }
     } catch (e: ReflectiveOperationException) {

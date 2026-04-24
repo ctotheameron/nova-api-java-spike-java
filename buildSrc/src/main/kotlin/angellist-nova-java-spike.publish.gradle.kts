@@ -42,9 +42,9 @@ configure<MavenPublishBaseExtension> {
     )
 
     pom {
-        name.set("AngelList Nova API")
+        name.set("Angellist Nova Java Spike API")
         description.set("The AngelList Nova API exposes programmatic access to fund operations including\ndistributions, vehicles, and entity management. Authentication is via OAuth2\nclient_credentials with per-scope authorization. All write operations require an\n`X-Organization-Id` header identifying the acting organization.")
-        url.set("https://docs.angellist.com/nova-api")
+        url.set("https://www.github.com/ctotheameron/nova-api-java-spike-java")
 
         licenses {
             license {
@@ -54,8 +54,8 @@ configure<MavenPublishBaseExtension> {
 
         developers {
             developer {
-                name.set("Angellist Nova")
-                email.set("support@angellist.com")
+                name.set("Angellist Nova Java Spike")
+                email.set("contact@example.com")
             }
         }
 

@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 import org.jetbrains.kotlin.gradle.dsl.KotlinVersion
 
 plugins {
-    id("angellist-nova.java")
+    id("angellist-nova-java-spike.java")
     kotlin("jvm")
 }
 

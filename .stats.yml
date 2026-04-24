@@ -1,4 +1,4 @@
 configured_endpoints: 2
-openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/angellist-ctotheameron%2Fnova-api-java-spike-1bd3c1ba6cfd116e01ad8a44219d96f46b496ff1838223fdbc91de83ab395411.yml
-openapi_spec_hash: 6237df2d20715391ed97f74b31227c32
-config_hash: 4bdc69a18738afcdb32900c5a790c0e4
+openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/angellist-ctotheameron%2Fnova-api-java-spike-b4a866c0e4688281243959a825cf16440e18af9295abf303594affb6660d6d44.yml
+openapi_spec_hash: a77e7f2d2345b7686c21f35bd103cccf
+config_hash: fa186cfff1bf21aa8ff1658c1fbbe28d

@@ -24,7 +24,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeType.OBJECT
 import com.fasterxml.jackson.databind.node.JsonNodeType.POJO
 import com.fasterxml.jackson.databind.node.JsonNodeType.STRING
 import com.fasterxml.jackson.databind.ser.std.NullSerializer
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 import java.io.InputStream
 import java.util.Objects
 import java.util.Optional
@@ -108,7 +108,9 @@ sealed class JsonField<out T : Any> {
         }
 
     fun asStringOrThrow(): String =
-        asString().orElseThrow { AngellistNovaInvalidDataException("Value is not a string") }
+        asString().orElseThrow {
+            AngellistNovaJavaSpikeInvalidDataException("Value is not a string")
+        }
 
     /**
      * Returns an [Optional] containing this field's list value, or an empty [Optional] if it
@@ -171,9 +173,12 @@ sealed class JsonField<out T : Any> {
     internal fun getRequired(name: String): T =
         when (this) {
             is KnownValue -> value
-            is JsonMissing -> throw AngellistNovaInvalidDataException("`$name` is not set")
-            is JsonNull -> throw AngellistNovaInvalidDataException("`$name` is null")
-            else -> throw AngellistNovaInvalidDataException("`$name` is invalid, received $this")
+            is JsonMissing -> throw AngellistNovaJavaSpikeInvalidDataException("`$name` is not set")
+            is JsonNull -> throw AngellistNovaJavaSpikeInvalidDataException("`$name` is null")
+            else ->
+                throw AngellistNovaJavaSpikeInvalidDataException(
+                    "`$name` is invalid, received $this"
+                )
         }
 
     @JvmSynthetic
@@ -188,7 +193,10 @@ sealed class JsonField<out T : Any> {
             is KnownValue -> Optional.of(value)
             is JsonMissing,
             is JsonNull -> Optional.empty()
-            else -> throw AngellistNovaInvalidDataException("`$name` is invalid, received $this")
+            else ->
+                throw AngellistNovaJavaSpikeInvalidDataException(
+                    "`$name` is invalid, received $this"
+                )
         }
 
     @JvmSynthetic

@@ -5,7 +5,7 @@ package io.github.ctotheameron.models.entities
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.jsonMapper
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 import org.assertj.core.api.Assertions.assertThat
 import org.junit.jupiter.api.Test
 import org.junit.jupiter.api.assertThrows
@@ -210,7 +210,7 @@ internal class WireInfoTest {
     fun incompatibleJsonShapeDeserializesToUnknown(testCase: IncompatibleJsonShapeTestCase) {
         val wireInfo = jsonMapper().convertValue(testCase.value, jacksonTypeRef<WireInfo>())
 
-        val e = assertThrows<AngellistNovaInvalidDataException> { wireInfo.validate() }
+        val e = assertThrows<AngellistNovaJavaSpikeInvalidDataException> { wireInfo.validate() }
         assertThat(e).hasMessageStartingWith("Unknown ")
     }
 }

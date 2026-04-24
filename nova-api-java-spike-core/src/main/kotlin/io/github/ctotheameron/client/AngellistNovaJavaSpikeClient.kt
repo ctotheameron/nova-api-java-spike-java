@@ -3,14 +3,14 @@
 package io.github.ctotheameron.client
 
 import io.github.ctotheameron.core.ClientOptions
-import io.github.ctotheameron.services.async.DistributionServiceAsync
-import io.github.ctotheameron.services.async.EntityServiceAsync
-import io.github.ctotheameron.services.async.PersonServiceAsync
+import io.github.ctotheameron.services.blocking.DistributionService
+import io.github.ctotheameron.services.blocking.EntityService
+import io.github.ctotheameron.services.blocking.PersonService
 import java.util.function.Consumer
 
 /**
- * A client for interacting with the Angellist Nova REST API asynchronously. You can also switch to
- * synchronous execution via the [sync] method.
+ * A client for interacting with the Angellist Nova Java Spike REST API synchronously. You can also
+ * switch to asynchronous execution via the [async] method.
  *
  * This client performs best when you create a single instance and reuse it for all interactions
  * with the REST API. This is because each client holds its own connection pool and thread pools.
@@ -22,15 +22,15 @@ import java.util.function.Consumer
  * if you are writing an application that needs to aggressively release unused resources, then you
  * may call [close].
  */
-interface AngellistNovaClientAsync {
+interface AngellistNovaJavaSpikeClient {
 
     /**
-     * Returns a version of this client that uses synchronous execution.
+     * Returns a version of this client that uses asynchronous execution.
      *
      * The returned client shares its resources, like its connection pool and thread pools, with
      * this client.
      */
-    fun sync(): AngellistNovaClient
+    fun async(): AngellistNovaJavaSpikeClientAsync
 
     /**
      * Returns a view of this service that provides access to raw HTTP responses for each method.
@@ -42,14 +42,14 @@ interface AngellistNovaClientAsync {
      *
      * The original service is not modified.
      */
-    fun withOptions(modifier: Consumer<ClientOptions.Builder>): AngellistNovaClientAsync
+    fun withOptions(modifier: Consumer<ClientOptions.Builder>): AngellistNovaJavaSpikeClient
 
-    fun entities(): EntityServiceAsync
+    fun entities(): EntityService
 
-    fun persons(): PersonServiceAsync
+    fun persons(): PersonService
 
     /** Create and inspect fund distributions */
-    fun distributions(): DistributionServiceAsync
+    fun distributions(): DistributionService
 
     /**
      * Closes this client, relinquishing any underlying resources.
@@ -65,7 +65,7 @@ interface AngellistNovaClientAsync {
     fun close()
 
     /**
-     * A view of [AngellistNovaClientAsync] that provides access to raw HTTP responses for each
+     * A view of [AngellistNovaJavaSpikeClient] that provides access to raw HTTP responses for each
      * method.
      */
     interface WithRawResponse {
@@ -77,13 +77,13 @@ interface AngellistNovaClientAsync {
          */
         fun withOptions(
             modifier: Consumer<ClientOptions.Builder>
-        ): AngellistNovaClientAsync.WithRawResponse
+        ): AngellistNovaJavaSpikeClient.WithRawResponse
 
-        fun entities(): EntityServiceAsync.WithRawResponse
+        fun entities(): EntityService.WithRawResponse
 
-        fun persons(): PersonServiceAsync.WithRawResponse
+        fun persons(): PersonService.WithRawResponse
 
         /** Create and inspect fund distributions */
-        fun distributions(): DistributionServiceAsync.WithRawResponse
+        fun distributions(): DistributionService.WithRawResponse
     }
 }

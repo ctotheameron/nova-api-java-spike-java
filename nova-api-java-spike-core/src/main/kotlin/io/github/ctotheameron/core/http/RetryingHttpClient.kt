@@ -6,8 +6,8 @@ import io.github.ctotheameron.core.DefaultSleeper
 import io.github.ctotheameron.core.RequestOptions
 import io.github.ctotheameron.core.Sleeper
 import io.github.ctotheameron.core.checkRequired
-import io.github.ctotheameron.errors.AngellistNovaIoException
-import io.github.ctotheameron.errors.AngellistNovaRetryableException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeIoException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeRetryableException
 import java.io.IOException
 import java.time.Clock
 import java.time.Duration
@@ -184,8 +184,8 @@ private constructor(
     private fun shouldRetry(throwable: Throwable): Boolean =
         // Only retry known retryable exceptions, other exceptions are not intended to be retried.
         throwable is IOException ||
-            throwable is AngellistNovaIoException ||
-            throwable is AngellistNovaRetryableException
+            throwable is AngellistNovaJavaSpikeIoException ||
+            throwable is AngellistNovaJavaSpikeRetryableException
 
     private fun getRetryBackoffDuration(retries: Int, response: HttpResponse?): Duration {
         // About the Retry-After header:

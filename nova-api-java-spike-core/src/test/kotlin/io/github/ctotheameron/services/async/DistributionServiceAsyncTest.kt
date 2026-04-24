@@ -3,7 +3,7 @@
 package io.github.ctotheameron.services.async
 
 import io.github.ctotheameron.TestServerExtension
-import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClientAsync
+import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClientAsync
 import io.github.ctotheameron.models.distributions.Currency
 import io.github.ctotheameron.models.distributions.DistributionCreateParams
 import java.time.OffsetDateTime
@@ -16,7 +16,7 @@ internal class DistributionServiceAsyncTest {
     @Test
     fun create() {
         val client =
-            AngellistNovaOkHttpClientAsync.builder()
+            AngellistNovaJavaSpikeOkHttpClientAsync.builder()
                 .baseUrl(TestServerExtension.BASE_URL)
                 .clientId("My Client ID")
                 .clientSecret("My Client Secret")
@@ -52,7 +52,7 @@ internal class DistributionServiceAsyncTest {
     @Test
     fun retrieve() {
         val client =
-            AngellistNovaOkHttpClientAsync.builder()
+            AngellistNovaJavaSpikeOkHttpClientAsync.builder()
                 .baseUrl(TestServerExtension.BASE_URL)
                 .clientId("My Client ID")
                 .clientSecret("My Client Secret")
