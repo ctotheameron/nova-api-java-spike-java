@@ -1,11 +1,11 @@
-rootProject.name = "nova-api-java-spike-java-root"
+rootProject.name = "nova-api-java-spike-root"
 
 val projectNames = rootDir.listFiles()
     ?.asSequence()
     .orEmpty()
     .filter { file ->
         file.isDirectory &&
-        file.name.startsWith("nova-api-java-spike-java") &&
+        file.name.startsWith("nova-api-java-spike") &&
         file.listFiles()?.asSequence().orEmpty().any { it.name == "build.gradle.kts" }
     }
     .map { it.name }
