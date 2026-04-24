@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2026-04-24)
+
+Full Changelog: [v0.2.0...v0.3.0](https://github.com/ctotheameron/nova-api-java-spike-java/compare/v0.2.0...v0.3.0)
+
+### Features
+
+* **api:** kill idempotency ([270a4eb](https://github.com/ctotheameron/nova-api-java-spike-java/commit/270a4eb21fbe0136150840006d8250bf0375136e))
+
 ## 0.2.0 (2026-04-24)
 
 Full Changelog: [v0.1.0...v0.2.0](https://github.com/ctotheameron/nova-api-java-spike-java/compare/v0.1.0...v0.2.0)
