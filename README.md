@@ -11,15 +11,6 @@ The Angellist Nova Java SDK provides convenient access to the [Angellist Nova RE
 
 It is generated with [Stainless](https://www.stainless.com/).
 
-## MCP Server
-
-Use the Angellist Nova MCP Server to enable AI assistants to interact with this API, allowing them to explore endpoints, make test requests, and use documentation to help integrate this SDK into your application.
-
-[![Add to Cursor](https://cursor.com/deeplink/mcp-install-dark.svg)](https://cursor.com/en-US/install-mcp?name=%40angellist%2Fnova-mcp&config=eyJjb21tYW5kIjoibnB4IiwiYXJncyI6WyIteSIsIkBhbmdlbGxpc3Qvbm92YS1tY3AiXSwiZW52Ijp7IkFOR0VMTElTVF9DTElFTlRfSUQiOiJNeSBDbGllbnQgSUQiLCJBTkdFTExJU1RfQ0xJRU5UX1NFQ1JFVCI6Ik15IENsaWVudCBTZWNyZXQiLCJBTkdFTExJU1RfT1JHQU5JWkFUSU9OX0lEIjoiTXkgT3JnYW5pemF0aW9uIElEIn19)
-[![Install in VS Code](https://img.shields.io/badge/_-Add_to_VS_Code-blue?style=for-the-badge&logo=data:image/svg%2bxml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGZpbGw9Im5vbmUiIHZpZXdCb3g9IjAgMCA0MCA0MCI+PHBhdGggZmlsbD0iI0VFRSIgZmlsbC1ydWxlPSJldmVub2RkIiBkPSJNMzAuMjM1IDM5Ljg4NGEyLjQ5MSAyLjQ5MSAwIDAgMS0xLjc4MS0uNzNMMTIuNyAyNC43OGwtMy40NiAyLjYyNC0zLjQwNiAyLjU4MmExLjY2NSAxLjY2NSAwIDAgMS0xLjA4Mi4zMzggMS42NjQgMS42NjQgMCAwIDEtMS4wNDYtLjQzMWwtMi4yLTJhMS42NjYgMS42NjYgMCAwIDEgMC0yLjQ2M0w3LjQ1OCAyMCA0LjY3IDE3LjQ1MyAxLjUwNyAxNC41N2ExLjY2NSAxLjY2NSAwIDAgMSAwLTIuNDYzbDIuMi0yYTEuNjY1IDEuNjY1IDAgMCAxIDIuMTMtLjA5N2w2Ljg2MyA1LjIwOUwyOC40NTIuODQ0YTIuNDg4IDIuNDg4IDAgMCAxIDEuODQxLS43MjljLjM1MS4wMDkuNjk5LjA5MSAxLjAxOS4yNDVsOC4yMzYgMy45NjFhMi41IDIuNSAwIDAgMSAxLjQxNSAyLjI1M3YuMDk5LS4wNDVWMzMuMzd2LS4wNDUuMDk1YTIuNTAxIDIuNTAxIDAgMCAxLTEuNDE2IDIuMjU3bC04LjIzNSAzLjk2MWEyLjQ5MiAyLjQ5MiAwIDAgMS0xLjA3Ny4yNDZabS43MTYtMjguOTQ3LTExLjk0OCA5LjA2MiAxMS45NTIgOS4wNjUtLjAwNC0xOC4xMjdaIi8+PC9zdmc+)](https://vscode.stainless.com/mcp/%7B%22name%22%3A%22%40angellist%2Fnova-mcp%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40angellist%2Fnova-mcp%22%5D%2C%22env%22%3A%7B%22ANGELLIST_CLIENT_ID%22%3A%22My%20Client%20ID%22%2C%22ANGELLIST_CLIENT_SECRET%22%3A%22My%20Client%20Secret%22%2C%22ANGELLIST_ORGANIZATION_ID%22%3A%22My%20Organization%20ID%22%7D%7D)
-
-> Note: You may need to set environment variables in your MCP client.
-
 <!-- x-release-please-start-version -->
 
 The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/io.github.ctotheameron/nova-api-java-spike/0.2.0).
@@ -63,9 +54,13 @@ import io.github.ctotheameron.models.distributions.DistributionCreateParams;
 import io.github.ctotheameron.models.entities.EntityType;
 import java.time.OffsetDateTime;
 
-// Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
-// Or configures using the `ANGELLIST_CLIENT_ID`, `ANGELLIST_CLIENT_SECRET`, `ANGELLIST_ORGANIZATION_ID` and `ANGELLIST_NOVA_BASE_URL` environment variables
-AngellistNovaClient client = AngellistNovaOkHttpClient.fromEnv();
+AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
+    // Configures using the `angellistnova.baseUrl` system property
+    // Or configures using the `ANGELLIST_NOVA_BASE_URL` environment variable
+    .fromEnv()
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
+    .build();
 
 DistributionCreateParams params = DistributionCreateParams.builder()
     .distributionDate(OffsetDateTime.parse("2026-07-01T00:00:00Z"))
@@ -98,9 +93,13 @@ Configure the client using system properties or environment variables:
 import io.github.ctotheameron.client.AngellistNovaClient;
 import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
-// Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
-// Or configures using the `ANGELLIST_CLIENT_ID`, `ANGELLIST_CLIENT_SECRET`, `ANGELLIST_ORGANIZATION_ID` and `ANGELLIST_NOVA_BASE_URL` environment variables
-AngellistNovaClient client = AngellistNovaOkHttpClient.fromEnv();
+AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
+    // Configures using the `angellistnova.baseUrl` system property
+    // Or configures using the `ANGELLIST_NOVA_BASE_URL` environment variable
+    .fromEnv()
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
+    .build();
 ```
 
 Or manually:
@@ -122,21 +121,19 @@ import io.github.ctotheameron.client.AngellistNovaClient;
 import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
-    // Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
-    // Or configures using the `ANGELLIST_CLIENT_ID`, `ANGELLIST_CLIENT_SECRET`, `ANGELLIST_ORGANIZATION_ID` and `ANGELLIST_NOVA_BASE_URL` environment variables
+    // Configures using the `angellistnova.baseUrl` system property
+    // Or configures using the `ANGELLIST_NOVA_BASE_URL` environment variable
     .fromEnv()
     .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
 See this table for the available options:
 
-| Setter           | System property                         | Environment variable        | Required | Default value                           |
-| ---------------- | --------------------------------------- | --------------------------- | -------- | --------------------------------------- |
-| `clientId`       | `angellistnova.angellistClientId`       | `ANGELLIST_CLIENT_ID`       | false    | -                                       |
-| `clientSecret`   | `angellistnova.angellistClientSecret`   | `ANGELLIST_CLIENT_SECRET`   | false    | -                                       |
-| `organizationId` | `angellistnova.angellistOrganizationId` | `ANGELLIST_ORGANIZATION_ID` | false    | -                                       |
-| `baseUrl`        | `angellistnova.baseUrl`                 | `ANGELLIST_NOVA_BASE_URL`   | true     | `"https://portal.angellist.com/api/v1"` |
+| Setter    | System property         | Environment variable      | Required | Default value                           |
+| --------- | ----------------------- | ------------------------- | -------- | --------------------------------------- |
+| `baseUrl` | `angellistnova.baseUrl` | `ANGELLIST_NOVA_BASE_URL` | true     | `"https://portal.angellist.com/api/v1"` |
 
 System properties take precedence over environment variables.
 
@@ -187,9 +184,13 @@ import io.github.ctotheameron.models.entities.EntityType;
 import java.time.OffsetDateTime;
 import java.util.concurrent.CompletableFuture;
 
-// Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
-// Or configures using the `ANGELLIST_CLIENT_ID`, `ANGELLIST_CLIENT_SECRET`, `ANGELLIST_ORGANIZATION_ID` and `ANGELLIST_NOVA_BASE_URL` environment variables
-AngellistNovaClient client = AngellistNovaOkHttpClient.fromEnv();
+AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
+    // Configures using the `angellistnova.baseUrl` system property
+    // Or configures using the `ANGELLIST_NOVA_BASE_URL` environment variable
+    .fromEnv()
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
+    .build();
 
 DistributionCreateParams params = DistributionCreateParams.builder()
     .distributionDate(OffsetDateTime.parse("2026-07-01T00:00:00Z"))
@@ -226,9 +227,13 @@ import io.github.ctotheameron.models.entities.EntityType;
 import java.time.OffsetDateTime;
 import java.util.concurrent.CompletableFuture;
 
-// Configures using the `angellistnova.angellistClientId`, `angellistnova.angellistClientSecret`, `angellistnova.angellistOrganizationId` and `angellistnova.baseUrl` system properties
-// Or configures using the `ANGELLIST_CLIENT_ID`, `ANGELLIST_CLIENT_SECRET`, `ANGELLIST_ORGANIZATION_ID` and `ANGELLIST_NOVA_BASE_URL` environment variables
-AngellistNovaClientAsync client = AngellistNovaOkHttpClientAsync.fromEnv();
+AngellistNovaClientAsync client = AngellistNovaOkHttpClientAsync.builder()
+    // Configures using the `angellistnova.baseUrl` system property
+    // Or configures using the `ANGELLIST_NOVA_BASE_URL` environment variable
+    .fromEnv()
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
+    .build();
 
 DistributionCreateParams params = DistributionCreateParams.builder()
     .distributionDate(OffsetDateTime.parse("2026-07-01T00:00:00Z"))
@@ -416,6 +421,8 @@ import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
     .maxRetries(4)
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -443,6 +450,8 @@ import java.time.Duration;
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
     .timeout(Duration.ofSeconds(30))
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -463,6 +472,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
         "https://example.com", 8080
       )
     ))
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -480,6 +491,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     // If `maxIdleConnections` is set, then `keepAliveDuration` must be set, and vice versa.
     .maxIdleConnections(10)
     .keepAliveDuration(Duration.ofMinutes(2))
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -503,6 +516,8 @@ AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .sslSocketFactory(yourSSLSocketFactory)
     .trustManager(yourTrustManager)
     .hostnameVerifier(yourHostnameVerifier)
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -517,6 +532,8 @@ import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
     .sandbox()
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
@@ -759,6 +776,8 @@ import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient;
 AngellistNovaClient client = AngellistNovaOkHttpClient.builder()
     .fromEnv()
     .responseValidation(true)
+    .clientId("My Client ID")
+    .clientSecret("My Client Secret")
     .build();
 ```
 
