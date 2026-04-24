@@ -49,7 +49,7 @@ internal class ProGuardCompatibilityTest {
     fun proguardRules() {
         val rulesFile =
             javaClass.classLoader.getResourceAsStream(
-                "META-INF/proguard/angellist-nova-java-core.pro"
+                "META-INF/proguard/nova-api-java-spike-core.pro"
             )
 
         assertThat(rulesFile).isNotNull()

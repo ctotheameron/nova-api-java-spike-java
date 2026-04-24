@@ -4,7 +4,7 @@ plugins {
 }
 
 dependencies {
-    api(project(":angellist-nova-java-client-okhttp"))
+    api(project(":nova-api-java-spike-client-okhttp"))
 }
 
 // Redefine `dokkaJavadoc` to:
