@@ -2,8 +2,8 @@
 
 <!-- x-release-please-start-version -->
 
-[![Maven Central](https://img.shields.io/maven-central/v/io.github.ctotheameron/angellist-nova-java)](https://central.sonatype.com/artifact/io.github.ctotheameron/angellist-nova-java/0.0.1)
-[![javadoc](https://javadoc.io/badge2/io.github.ctotheameron/angellist-nova-java/0.0.1/javadoc.svg)](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.0.1)
+[![Maven Central](https://img.shields.io/maven-central/v/io.github.ctotheameron/angellist-nova-java)](https://central.sonatype.com/artifact/io.github.ctotheameron/angellist-nova-java/0.1.0)
+[![javadoc](https://javadoc.io/badge2/io.github.ctotheameron/angellist-nova-java/0.1.0/javadoc.svg)](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.1.0)
 
 <!-- x-release-please-end -->
 
@@ -22,7 +22,7 @@ Use the Angellist Nova MCP Server to enable AI assistants to interact with this 
 
 <!-- x-release-please-start-version -->
 
-The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.0.1).
+The REST API documentation can be found on [docs.angellist.com](https://docs.angellist.com/nova-api). Javadocs are available on [javadoc.io](https://javadoc.io/doc/io.github.ctotheameron/angellist-nova-java/0.1.0).
 
 <!-- x-release-please-end -->
 
@@ -33,7 +33,7 @@ The REST API documentation can be found on [docs.angellist.com](https://docs.ang
 ### Gradle
 
 ```kotlin
-implementation("io.github.ctotheameron:angellist-nova-java:0.0.1")
+implementation("io.github.ctotheameron:angellist-nova-java:0.1.0")
 ```
 
 ### Maven
@@ -42,7 +42,7 @@ implementation("io.github.ctotheameron:angellist-nova-java:0.0.1")
 <dependency>
   <groupId>io.github.ctotheameron</groupId>
   <artifactId>angellist-nova-java</artifactId>
-  <version>0.0.1</version>
+  <version>0.1.0</version>
 </dependency>
 ```
 
