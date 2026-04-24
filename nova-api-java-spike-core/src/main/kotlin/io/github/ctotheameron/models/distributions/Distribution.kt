@@ -13,7 +13,7 @@ import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.checkKnown
 import io.github.ctotheameron.core.checkRequired
 import io.github.ctotheameron.core.toImmutable
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 import java.time.OffsetDateTime
 import java.util.Collections
 import java.util.Objects
@@ -92,84 +92,84 @@ private constructor(
     /**
      * UUID of the distribution
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun id(): String = id.getRequired("id")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun approvedAt(): Optional<OffsetDateTime> = approvedAt.getOptional("approved_at")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun cancelledAt(): Optional<OffsetDateTime> = cancelledAt.getOptional("cancelled_at")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun createdAt(): OffsetDateTime = createdAt.getRequired("created_at")
 
     /**
      * Distribution date
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun distributionDate(): OffsetDateTime = distributionDate.getRequired("distribution_date")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun executedAt(): Optional<OffsetDateTime> = executedAt.getOptional("executed_at")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun name(): String = name.getRequired("name")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun payments(): List<DistributionPayment> = payments.getRequired("payments")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun publishedAt(): Optional<OffsetDateTime> = publishedAt.getOptional("published_at")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun shortId(): String = shortId.getRequired("short_id")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun status(): DistributionStatus = status.getRequired("status")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun updatedAt(): OffsetDateTime = updatedAt.getRequired("updated_at")
 
     /**
      * UUID of the vehicle this distribution pays from
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun vehicleId(): String = vehicleId.getRequired("vehicle_id")
 
@@ -627,7 +627,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: AngellistNovaJavaSpikeInvalidDataException) {
             false
         }
 

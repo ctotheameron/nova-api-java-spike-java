@@ -11,7 +11,7 @@ import io.github.ctotheameron.core.JsonField
 import io.github.ctotheameron.core.JsonMissing
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.checkRequired
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 import java.util.Collections
 import java.util.Objects
 import java.util.Optional
@@ -45,48 +45,48 @@ private constructor(
     /**
      * City
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun city(): String = city.getRequired("city")
 
     /**
      * ISO 3166-1 alpha-2 country code
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun countryCode(): String = countryCode.getRequired("country_code")
 
     /**
      * Street address line 1
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun street1(): String = street1.getRequired("street1")
 
     /**
      * Postal code
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun postalCode(): Optional<String> = postalCode.getOptional("postal_code")
 
     /**
      * State or province
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun state(): Optional<String> = state.getOptional("state")
 
     /**
      * Street address line 2
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   (e.g. if the server responded with an unexpected value).
      */
     fun street2(): Optional<String> = street2.getOptional("street2")
 
@@ -316,7 +316,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: AngellistNovaJavaSpikeInvalidDataException) {
             false
         }
 

@@ -2,7 +2,7 @@
 
 package io.github.ctotheameron.core
 
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 import java.util.Collections
 import java.util.SortedMap
 import java.util.concurrent.CompletableFuture
@@ -10,7 +10,7 @@ import java.util.concurrent.locks.Lock
 
 @JvmSynthetic
 internal fun <T : Any> T?.getOrThrow(name: String): T =
-    this ?: throw AngellistNovaInvalidDataException("`${name}` is not present")
+    this ?: throw AngellistNovaJavaSpikeInvalidDataException("`${name}` is not present")
 
 @JvmSynthetic
 internal fun <T> List<T>.toImmutable(): List<T> =

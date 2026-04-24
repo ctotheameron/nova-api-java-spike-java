@@ -3,7 +3,7 @@
 package io.github.ctotheameron.proguard
 
 import com.fasterxml.jackson.module.kotlin.jacksonTypeRef
-import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient
+import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient
 import io.github.ctotheameron.core.jsonMapper
 import io.github.ctotheameron.models.distributions.Currency
 import io.github.ctotheameron.models.distributions.Distribution
@@ -58,7 +58,7 @@ internal class ProGuardCompatibilityTest {
     @Test
     fun client() {
         val client =
-            AngellistNovaOkHttpClient.builder()
+            AngellistNovaJavaSpikeOkHttpClient.builder()
                 .clientId("My Client ID")
                 .clientSecret("My Client Secret")
                 .build()

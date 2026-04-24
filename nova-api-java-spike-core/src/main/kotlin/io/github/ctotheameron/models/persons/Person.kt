@@ -13,7 +13,7 @@ import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.checkKnown
 import io.github.ctotheameron.core.checkRequired
 import io.github.ctotheameron.core.toImmutable
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 import java.util.Collections
 import java.util.Objects
 import kotlin.jvm.optionals.getOrNull
@@ -41,32 +41,32 @@ private constructor(
     /**
      * UUID of an existing person
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun id(): String = id.getRequired("id")
 
     /**
      * Email address used for notifications and account linkage
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun email(): String = email.getRequired("email")
 
     /**
      * Your own identifiers for this person
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun externalReferences(): List<String> = externalReferences.getRequired("external_references")
 
     /**
      * Full legal name
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-     *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+     * @throws AngellistNovaJavaSpikeInvalidDataException if the JSON field has an unexpected type
+     *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun name(): String = name.getRequired("name")
 
@@ -269,7 +269,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: AngellistNovaJavaSpikeInvalidDataException) {
             false
         }
 

@@ -9,7 +9,7 @@ package io.github.ctotheameron.errors
  * @param message A descriptive error message
  * @param cause The underlying cause of this exception, if any
  */
-class AngellistNovaRetryableException
+class AngellistNovaJavaSpikeRetryableException
 @JvmOverloads
 constructor(message: String? = null, cause: Throwable? = null) :
-    AngellistNovaException(message, cause)
+    AngellistNovaJavaSpikeException(message, cause)

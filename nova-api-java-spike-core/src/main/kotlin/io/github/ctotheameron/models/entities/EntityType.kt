@@ -5,7 +5,7 @@ package io.github.ctotheameron.models.entities
 import com.fasterxml.jackson.annotation.JsonCreator
 import io.github.ctotheameron.core.Enum
 import io.github.ctotheameron.core.JsonField
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeInvalidDataException
 
 class EntityType @JsonCreator private constructor(private val value: JsonField<String>) : Enum {
 
@@ -139,8 +139,8 @@ class EntityType @JsonCreator private constructor(private val value: JsonField<S
      * Use the [value] method instead if you're uncertain the value is always known and don't want
      * to throw for the unknown case.
      *
-     * @throws AngellistNovaInvalidDataException if this class instance's value is a not a known
-     *   member.
+     * @throws AngellistNovaJavaSpikeInvalidDataException if this class instance's value is a not a
+     *   known member.
      */
     fun known(): Known =
         when (this) {
@@ -160,7 +160,7 @@ class EntityType @JsonCreator private constructor(private val value: JsonField<S
             EMPLOYEE_BENEFIT_PLAN -> Known.EMPLOYEE_BENEFIT_PLAN
             KEOGH_PLAN -> Known.KEOGH_PLAN
             OTHER_ENTITY -> Known.OTHER_ENTITY
-            else -> throw AngellistNovaInvalidDataException("Unknown EntityType: $value")
+            else -> throw AngellistNovaJavaSpikeInvalidDataException("Unknown EntityType: $value")
         }
 
     /**
@@ -169,12 +169,12 @@ class EntityType @JsonCreator private constructor(private val value: JsonField<S
      * This differs from the [toString] method because that method is primarily for debugging and
      * generally doesn't throw.
      *
-     * @throws AngellistNovaInvalidDataException if this class instance's value does not have the
-     *   expected primitive type.
+     * @throws AngellistNovaJavaSpikeInvalidDataException if this class instance's value does not
+     *   have the expected primitive type.
      */
     fun asString(): String =
         _value().asString().orElseThrow {
-            AngellistNovaInvalidDataException("Value is not a String")
+            AngellistNovaJavaSpikeInvalidDataException("Value is not a String")
         }
 
     private var validated: Boolean = false
@@ -192,7 +192,7 @@ class EntityType @JsonCreator private constructor(private val value: JsonField<S
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: AngellistNovaJavaSpikeInvalidDataException) {
             false
         }
 

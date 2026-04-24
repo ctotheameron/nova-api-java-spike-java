@@ -8,12 +8,12 @@ import com.github.tomakehurst.wiremock.client.WireMock.status
 import com.github.tomakehurst.wiremock.client.WireMock.stubFor
 import com.github.tomakehurst.wiremock.junit5.WireMockRuntimeInfo
 import com.github.tomakehurst.wiremock.junit5.WireMockTest
-import io.github.ctotheameron.client.AngellistNovaClient
-import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient
+import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient
+import io.github.ctotheameron.client.okhttp.AngellistNovaJavaSpikeOkHttpClient
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.http.Headers
 import io.github.ctotheameron.core.jsonMapper
-import io.github.ctotheameron.errors.AngellistNovaException
+import io.github.ctotheameron.errors.AngellistNovaJavaSpikeException
 import io.github.ctotheameron.errors.BadRequestException
 import io.github.ctotheameron.errors.InternalServerException
 import io.github.ctotheameron.errors.NotFoundException
@@ -49,12 +49,12 @@ internal class ErrorHandlingTest {
         private const val NOT_JSON: String = "Not JSON"
     }
 
-    private lateinit var client: AngellistNovaClient
+    private lateinit var client: AngellistNovaJavaSpikeClient
 
     @BeforeEach
     fun beforeEach(wmRuntimeInfo: WireMockRuntimeInfo) {
         client =
-            AngellistNovaOkHttpClient.builder()
+            AngellistNovaJavaSpikeOkHttpClient.builder()
                 .baseUrl(wmRuntimeInfo.httpBaseUrl)
                 .clientId("My Client ID")
                 .clientSecret("My Client Secret")
@@ -694,7 +694,7 @@ internal class ErrorHandlingTest {
         )
 
         val e =
-            assertThrows<AngellistNovaException> {
+            assertThrows<AngellistNovaJavaSpikeException> {
                 distributionService.create(
                     DistributionCreateParams.builder()
                         .distributionDate(OffsetDateTime.parse("2024-04-20T00:00:00Z"))

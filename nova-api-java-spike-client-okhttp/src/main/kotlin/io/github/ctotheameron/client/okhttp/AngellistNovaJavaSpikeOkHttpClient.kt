@@ -3,8 +3,8 @@
 package io.github.ctotheameron.client.okhttp
 
 import com.fasterxml.jackson.databind.json.JsonMapper
-import io.github.ctotheameron.client.AngellistNovaClient
-import io.github.ctotheameron.client.AngellistNovaClientImpl
+import io.github.ctotheameron.client.AngellistNovaJavaSpikeClient
+import io.github.ctotheameron.client.AngellistNovaJavaSpikeClientImpl
 import io.github.ctotheameron.core.ClientOptions
 import io.github.ctotheameron.core.Sleeper
 import io.github.ctotheameron.core.Timeout
@@ -23,14 +23,16 @@ import javax.net.ssl.X509TrustManager
 import kotlin.jvm.optionals.getOrNull
 
 /**
- * A class that allows building an instance of [AngellistNovaClient] with [OkHttpClient] as the
- * underlying [HttpClient].
+ * A class that allows building an instance of [AngellistNovaJavaSpikeClient] with [OkHttpClient] as
+ * the underlying [HttpClient].
  */
-class AngellistNovaOkHttpClient private constructor() {
+class AngellistNovaJavaSpikeOkHttpClient private constructor() {
 
     companion object {
 
-        /** Returns a mutable builder for constructing an instance of [AngellistNovaClient]. */
+        /**
+         * Returns a mutable builder for constructing an instance of [AngellistNovaJavaSpikeClient].
+         */
         @JvmStatic fun builder() = Builder()
 
         /**
@@ -38,10 +40,10 @@ class AngellistNovaOkHttpClient private constructor() {
          *
          * @see ClientOptions.Builder.fromEnv
          */
-        @JvmStatic fun fromEnv(): AngellistNovaClient = builder().fromEnv().build()
+        @JvmStatic fun fromEnv(): AngellistNovaJavaSpikeClient = builder().fromEnv().build()
     }
 
-    /** A builder for [AngellistNovaOkHttpClient]. */
+    /** A builder for [AngellistNovaJavaSpikeOkHttpClient]. */
     class Builder internal constructor() {
 
         private var clientOptions: ClientOptions.Builder = ClientOptions.builder()
@@ -370,12 +372,12 @@ class AngellistNovaOkHttpClient private constructor() {
         fun fromEnv() = apply { clientOptions.fromEnv() }
 
         /**
-         * Returns an immutable instance of [AngellistNovaClient].
+         * Returns an immutable instance of [AngellistNovaJavaSpikeClient].
          *
          * Further updates to this [Builder] will not mutate the returned instance.
          */
-        fun build(): AngellistNovaClient =
-            AngellistNovaClientImpl(
+        fun build(): AngellistNovaJavaSpikeClient =
+            AngellistNovaJavaSpikeClientImpl(
                 clientOptions
                     .httpClient(
                         OkHttpClient.builder()

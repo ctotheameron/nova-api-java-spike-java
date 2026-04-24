@@ -5,9 +5,9 @@ package io.github.ctotheameron.errors
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.http.Headers
 
-abstract class AngellistNovaServiceException
+abstract class AngellistNovaJavaSpikeServiceException
 protected constructor(message: String, cause: Throwable? = null) :
-    AngellistNovaException(message, cause) {
+    AngellistNovaJavaSpikeException(message, cause) {
 
     abstract fun statusCode(): Int
 

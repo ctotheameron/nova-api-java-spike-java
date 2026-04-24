@@ -1,6 +1,6 @@
 package io.github.ctotheameron.errors
 
-class AngellistNovaIoException
+class AngellistNovaJavaSpikeIoException
 @JvmOverloads
 constructor(message: String? = null, cause: Throwable? = null) :
-    AngellistNovaException(message, cause)
+    AngellistNovaJavaSpikeException(message, cause)
