@@ -2,7 +2,7 @@
 
 package io.github.ctotheameron.core
 
-import io.github.ctotheameron.client.AngellistNovaClient
+import io.github.ctotheameron.client.NovaApiJavaSpikeClient
 
 fun getOsArch(): String {
     val osArch = System.getProperty("os.arch")
@@ -37,6 +37,6 @@ fun getOsName(): String {
 fun getOsVersion(): String = System.getProperty("os.version", "unknown") ?: "unknown"
 
 fun getPackageVersion(): String =
-    AngellistNovaClient::class.java.`package`?.implementationVersion ?: "unknown"
+    NovaApiJavaSpikeClient::class.java.`package`?.implementationVersion ?: "unknown"
 
 fun getJavaVersion(): String = System.getProperty("java.version", "unknown") ?: "unknown"

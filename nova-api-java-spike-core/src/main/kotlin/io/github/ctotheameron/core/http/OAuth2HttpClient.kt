@@ -12,7 +12,7 @@ import io.github.ctotheameron.core.handlers.errorHandler
 import io.github.ctotheameron.core.handlers.jsonHandler
 import io.github.ctotheameron.core.http.HttpResponse.Handler
 import io.github.ctotheameron.core.withLockAsync
-import io.github.ctotheameron.errors.AngellistNovaRetryableException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeRetryableException
 import java.time.Clock
 import java.time.Instant
 import java.util.Base64
@@ -48,7 +48,7 @@ private constructor(
             response.close()
 
             if (isTokenExpired()) {
-                throw AngellistNovaRetryableException("OAuth token is expired")
+                throw NovaApiJavaSpikeRetryableException("OAuth token is expired")
             }
         }
 
@@ -92,7 +92,7 @@ private constructor(
                     response.close()
 
                     if (isTokenExpired()) {
-                        throw AngellistNovaRetryableException("OAuth token is expired")
+                        throw NovaApiJavaSpikeRetryableException("OAuth token is expired")
                     }
                 }
 

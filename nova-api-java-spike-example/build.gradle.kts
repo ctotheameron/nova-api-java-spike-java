@@ -1,5 +1,5 @@
 plugins {
-    id("angellist-nova.java")
+    id("nova-api-java-spike.java")
     application
 }
 

@@ -1,6 +1,6 @@
 plugins {
-    id("angellist-nova.kotlin")
-    id("angellist-nova.publish")
+    id("nova-api-java-spike.kotlin")
+    id("nova-api-java-spike.publish")
 }
 
 dependencies {

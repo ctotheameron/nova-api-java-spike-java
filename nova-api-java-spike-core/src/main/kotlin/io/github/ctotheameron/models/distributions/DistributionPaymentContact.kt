@@ -11,7 +11,7 @@ import io.github.ctotheameron.core.JsonField
 import io.github.ctotheameron.core.JsonMissing
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.checkRequired
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 import io.github.ctotheameron.models.persons.Person
 import java.util.Collections
 import java.util.Objects
@@ -34,13 +34,13 @@ private constructor(
     /**
      * Whether the person was notified
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun notify(): Boolean = notify.getRequired("notify")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun person(): Person = person.getRequired("person")
@@ -176,7 +176,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: NovaApiJavaSpikeInvalidDataException) {
             false
         }
 

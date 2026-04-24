@@ -11,7 +11,7 @@ import io.github.ctotheameron.core.JsonField
 import io.github.ctotheameron.core.JsonMissing
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.checkRequired
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 import java.util.Collections
 import java.util.Objects
 import java.util.Optional
@@ -85,13 +85,13 @@ private constructor(
     /**
      * Bank account number
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun accountNumber(): String = accountNumber.getRequired("account_number")
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun address(): WireAddress = address.getRequired("address")
@@ -99,7 +99,7 @@ private constructor(
     /**
      * Name of the bank
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun bankName(): String = bankName.getRequired("bank_name")
@@ -107,7 +107,7 @@ private constructor(
     /**
      * Name of the account holder, as registered with the bank
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun beneficiaryName(): String = beneficiaryName.getRequired("beneficiary_name")
@@ -115,7 +115,7 @@ private constructor(
     /**
      * SWIFT/BIC code
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun swiftCode(): String = swiftCode.getRequired("swift_code")
@@ -134,16 +134,16 @@ private constructor(
     /**
      * Bank branch code (e.g. sort code, IFSC, etc.)
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type (e.g.
+     *   if the server responded with an unexpected value).
      */
     fun branchCode(): Optional<String> = branchCode.getOptional("branch_code")
 
     /**
      * Name of the intermediary bank
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type (e.g.
+     *   if the server responded with an unexpected value).
      */
     fun intermediaryPartyName(): Optional<String> =
         intermediaryPartyName.getOptional("intermediary_party_name")
@@ -151,8 +151,8 @@ private constructor(
     /**
      * SWIFT/BIC code of the intermediary bank
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type (e.g.
+     *   if the server responded with an unexpected value).
      */
     fun intermediaryPartySwiftCode(): Optional<String> =
         intermediaryPartySwiftCode.getOptional("intermediary_party_swift_code")
@@ -160,8 +160,8 @@ private constructor(
     /**
      * Payment instructions line 1
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type (e.g.
+     *   if the server responded with an unexpected value).
      */
     fun originatorToBeneficiaryInstructionsLine1(): Optional<String> =
         originatorToBeneficiaryInstructionsLine1.getOptional(
@@ -171,8 +171,8 @@ private constructor(
     /**
      * Payment instructions line 2
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type (e.g.
+     *   if the server responded with an unexpected value).
      */
     fun originatorToBeneficiaryInstructionsLine2(): Optional<String> =
         originatorToBeneficiaryInstructionsLine2.getOptional(
@@ -182,8 +182,8 @@ private constructor(
     /**
      * Payment instructions line 3
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type (e.g. if
-     *   the server responded with an unexpected value).
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type (e.g.
+     *   if the server responded with an unexpected value).
      */
     fun originatorToBeneficiaryInstructionsLine3(): Optional<String> =
         originatorToBeneficiaryInstructionsLine3.getOptional(
@@ -604,7 +604,7 @@ private constructor(
         swiftCode()
         _type().let {
             if (it != JsonValue.from("international_wire")) {
-                throw AngellistNovaInvalidDataException("'type' is invalid, received $it")
+                throw NovaApiJavaSpikeInvalidDataException("'type' is invalid, received $it")
             }
         }
         branchCode()
@@ -620,7 +620,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: NovaApiJavaSpikeInvalidDataException) {
             false
         }
 

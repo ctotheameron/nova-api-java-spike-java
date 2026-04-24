@@ -27,7 +27,7 @@ import io.github.ctotheameron.core.getOrThrow
 import io.github.ctotheameron.core.http.Headers
 import io.github.ctotheameron.core.http.QueryParams
 import io.github.ctotheameron.core.toImmutable
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 import io.github.ctotheameron.models.entities.AchInfo
 import io.github.ctotheameron.models.entities.DomesticWire
 import io.github.ctotheameron.models.entities.EntityType
@@ -54,13 +54,13 @@ private constructor(
     /**
      * Distribution date
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun distributionDate(): OffsetDateTime = body.distributionDate()
 
     /**
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun name(): String = body.name()
@@ -68,7 +68,7 @@ private constructor(
     /**
      * List of payments
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun payments(): List<Payment> = body.payments()
@@ -76,7 +76,7 @@ private constructor(
     /**
      * UUID of the vehicle this distribution pays from
      *
-     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
+     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or is
      *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
      */
     fun vehicleId(): String = body.vehicleId()
@@ -392,30 +392,34 @@ private constructor(
         /**
          * Distribution date
          *
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun distributionDate(): OffsetDateTime = distributionDate.getRequired("distribution_date")
 
         /**
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun name(): String = name.getRequired("name")
 
         /**
          * List of payments
          *
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun payments(): List<Payment> = payments.getRequired("payments")
 
         /**
          * UUID of the vehicle this distribution pays from
          *
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun vehicleId(): String = vehicleId.getRequired("vehicle_id")
 
@@ -624,7 +628,7 @@ private constructor(
             try {
                 validate()
                 true
-            } catch (e: AngellistNovaInvalidDataException) {
+            } catch (e: NovaApiJavaSpikeInvalidDataException) {
                 false
             }
 
@@ -689,8 +693,9 @@ private constructor(
         /**
          * Amount in the smallest currency unit
          *
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun amount(): Long = amount.getRequired("amount")
 
@@ -698,24 +703,27 @@ private constructor(
          * Each contact is linked to the entity (created if provided inline) and, when `notify` is
          * true, emailed when the payment is published.
          *
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun contacts(): List<Contact> = contacts.getRequired("contacts")
 
         /**
          * ISO 4217 currency code (USD-only currently)
          *
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun currency(): Currency = currency.getRequired("currency")
 
         /**
          * UUID of an existing entity
          *
-         * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or is
-         *   unexpectedly missing or null (e.g. if the server responded with an unexpected value).
+         * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type or
+         *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+         *   value).
          */
         fun entity(): Entity = entity.getRequired("entity")
 
@@ -929,7 +937,7 @@ private constructor(
             try {
                 validate()
                 true
-            } catch (e: AngellistNovaInvalidDataException) {
+            } catch (e: NovaApiJavaSpikeInvalidDataException) {
                 false
             }
 
@@ -965,8 +973,8 @@ private constructor(
             /**
              * Whether the person was notified
              *
-             * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or
-             *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+             * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type
+             *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected
              *   value).
              */
             fun notify(): Boolean = notify.getRequired("notify")
@@ -974,8 +982,8 @@ private constructor(
             /**
              * UUID of an existing person
              *
-             * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected type or
-             *   is unexpectedly missing or null (e.g. if the server responded with an unexpected
+             * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected type
+             *   or is unexpectedly missing or null (e.g. if the server responded with an unexpected
              *   value).
              */
             fun person(): Person = person.getRequired("person")
@@ -1124,7 +1132,7 @@ private constructor(
                 try {
                     validate()
                     true
-                } catch (e: AngellistNovaInvalidDataException) {
+                } catch (e: NovaApiJavaSpikeInvalidDataException) {
                     false
                 }
 
@@ -1195,7 +1203,7 @@ private constructor(
                     try {
                         validate()
                         true
-                    } catch (e: AngellistNovaInvalidDataException) {
+                    } catch (e: NovaApiJavaSpikeInvalidDataException) {
                         false
                     }
 
@@ -1267,10 +1275,10 @@ private constructor(
                      * an older version than the API, then the API may respond with new variants
                      * that the SDK is unaware of.
                      *
-                     * @throws AngellistNovaInvalidDataException in the default implementation.
+                     * @throws NovaApiJavaSpikeInvalidDataException in the default implementation.
                      */
                     fun unknown(json: JsonValue?): T {
-                        throw AngellistNovaInvalidDataException("Unknown Person: $json")
+                        throw NovaApiJavaSpikeInvalidDataException("Unknown Person: $json")
                     }
                 }
 
@@ -1347,26 +1355,26 @@ private constructor(
                     /**
                      * Email address used for notifications and account linkage
                      *
-                     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected
-                     *   type or is unexpectedly missing or null (e.g. if the server responded with
-                     *   an unexpected value).
+                     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an
+                     *   unexpected type or is unexpectedly missing or null (e.g. if the server
+                     *   responded with an unexpected value).
                      */
                     fun email(): String = email.getRequired("email")
 
                     /**
                      * Full legal name
                      *
-                     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected
-                     *   type or is unexpectedly missing or null (e.g. if the server responded with
-                     *   an unexpected value).
+                     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an
+                     *   unexpected type or is unexpectedly missing or null (e.g. if the server
+                     *   responded with an unexpected value).
                      */
                     fun name(): String = name.getRequired("name")
 
                     /**
                      * Your own identifiers for this person
                      *
-                     * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected
-                     *   type (e.g. if the server responded with an unexpected value).
+                     * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an
+                     *   unexpected type (e.g. if the server responded with an unexpected value).
                      */
                     fun externalReferences(): Optional<List<String>> =
                         externalReferences.getOptional("external_references")
@@ -1558,7 +1566,7 @@ private constructor(
                         try {
                             validate()
                             true
-                        } catch (e: AngellistNovaInvalidDataException) {
+                        } catch (e: NovaApiJavaSpikeInvalidDataException) {
                             false
                         }
 
@@ -1672,7 +1680,7 @@ private constructor(
                 try {
                     validate()
                     true
-                } catch (e: AngellistNovaInvalidDataException) {
+                } catch (e: NovaApiJavaSpikeInvalidDataException) {
                     false
                 }
 
@@ -1743,10 +1751,10 @@ private constructor(
                  * older version than the API, then the API may respond with new variants that the
                  * SDK is unaware of.
                  *
-                 * @throws AngellistNovaInvalidDataException in the default implementation.
+                 * @throws NovaApiJavaSpikeInvalidDataException in the default implementation.
                  */
                 fun unknown(json: JsonValue?): T {
-                    throw AngellistNovaInvalidDataException("Unknown Entity: $json")
+                    throw NovaApiJavaSpikeInvalidDataException("Unknown Entity: $json")
                 }
             }
 
@@ -1825,14 +1833,14 @@ private constructor(
                 /**
                  * Legal name of the entity
                  *
-                 * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected
+                 * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected
                  *   type or is unexpectedly missing or null (e.g. if the server responded with an
                  *   unexpected value).
                  */
                 fun name(): String = name.getRequired("name")
 
                 /**
-                 * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected
+                 * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected
                  *   type or is unexpectedly missing or null (e.g. if the server responded with an
                  *   unexpected value).
                  */
@@ -1841,7 +1849,7 @@ private constructor(
                 /**
                  * Your own identifiers for this entity
                  *
-                 * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected
+                 * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected
                  *   type (e.g. if the server responded with an unexpected value).
                  */
                 fun externalReferences(): Optional<List<String>> =
@@ -1850,7 +1858,7 @@ private constructor(
                 /**
                  * US ACH payment
                  *
-                 * @throws AngellistNovaInvalidDataException if the JSON field has an unexpected
+                 * @throws NovaApiJavaSpikeInvalidDataException if the JSON field has an unexpected
                  *   type (e.g. if the server responded with an unexpected value).
                  */
                 fun wireInfo(): Optional<WireInfo> = wireInfo.getOptional("wire_info")
@@ -2077,7 +2085,7 @@ private constructor(
                     try {
                         validate()
                         true
-                    } catch (e: AngellistNovaInvalidDataException) {
+                    } catch (e: NovaApiJavaSpikeInvalidDataException) {
                         false
                     }
 

@@ -1,6 +1,6 @@
 package io.github.ctotheameron.errors
 
-class AngellistNovaInvalidDataException
+class NovaApiJavaSpikeInvalidDataException
 @JvmOverloads
 constructor(message: String? = null, cause: Throwable? = null) :
-    AngellistNovaException(message, cause)
+    NovaApiJavaSpikeException(message, cause)

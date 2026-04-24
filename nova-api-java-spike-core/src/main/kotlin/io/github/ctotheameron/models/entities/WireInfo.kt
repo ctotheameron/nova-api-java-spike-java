@@ -13,7 +13,7 @@ import io.github.ctotheameron.core.BaseDeserializer
 import io.github.ctotheameron.core.BaseSerializer
 import io.github.ctotheameron.core.JsonValue
 import io.github.ctotheameron.core.getOrThrow
-import io.github.ctotheameron.errors.AngellistNovaInvalidDataException
+import io.github.ctotheameron.errors.NovaApiJavaSpikeInvalidDataException
 import java.util.Objects
 import java.util.Optional
 import kotlin.jvm.optionals.getOrNull
@@ -94,7 +94,7 @@ private constructor(
         try {
             validate()
             true
-        } catch (e: AngellistNovaInvalidDataException) {
+        } catch (e: NovaApiJavaSpikeInvalidDataException) {
             false
         }
 
@@ -174,10 +174,10 @@ private constructor(
          * that doesn't match any known variant. For example, if the SDK is on an older version than
          * the API, then the API may respond with new variants that the SDK is unaware of.
          *
-         * @throws AngellistNovaInvalidDataException in the default implementation.
+         * @throws NovaApiJavaSpikeInvalidDataException in the default implementation.
          */
         fun unknown(json: JsonValue?): T {
-            throw AngellistNovaInvalidDataException("Unknown WireInfo: $json")
+            throw NovaApiJavaSpikeInvalidDataException("Unknown WireInfo: $json")
         }
     }
 

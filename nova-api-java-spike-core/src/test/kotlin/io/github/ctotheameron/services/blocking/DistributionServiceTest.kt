@@ -3,7 +3,7 @@
 package io.github.ctotheameron.services.blocking
 
 import io.github.ctotheameron.TestServerExtension
-import io.github.ctotheameron.client.okhttp.AngellistNovaOkHttpClient
+import io.github.ctotheameron.client.okhttp.NovaApiJavaSpikeOkHttpClient
 import io.github.ctotheameron.models.distributions.Currency
 import io.github.ctotheameron.models.distributions.DistributionCreateParams
 import java.time.OffsetDateTime
@@ -16,7 +16,7 @@ internal class DistributionServiceTest {
     @Test
     fun create() {
         val client =
-            AngellistNovaOkHttpClient.builder()
+            NovaApiJavaSpikeOkHttpClient.builder()
                 .baseUrl(TestServerExtension.BASE_URL)
                 .clientId("My Client ID")
                 .clientSecret("My Client Secret")
@@ -51,7 +51,7 @@ internal class DistributionServiceTest {
     @Test
     fun retrieve() {
         val client =
-            AngellistNovaOkHttpClient.builder()
+            NovaApiJavaSpikeOkHttpClient.builder()
                 .baseUrl(TestServerExtension.BASE_URL)
                 .clientId("My Client ID")
                 .clientSecret("My Client Secret")
