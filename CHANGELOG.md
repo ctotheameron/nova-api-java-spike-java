@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.4.0 (2026-04-28)
+
+Full Changelog: [v0.3.1...v0.4.0](https://github.com/ctotheameron/nova-api-java-spike-java/compare/v0.3.1...v0.4.0)
+
+### Features
+
+* support setting headers via env ([7b03a50](https://github.com/ctotheameron/nova-api-java-spike-java/commit/7b03a50cce1bf4862506147cafd2555d110a51fc))
+
 ## 0.3.1 (2026-04-24)
 
 Full Changelog: [v0.3.0...v0.3.1](https://github.com/ctotheameron/nova-api-java-spike-java/compare/v0.3.0...v0.3.1)
